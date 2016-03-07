@@ -1,0 +1,33 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Generality}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{History and Development}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.3}{Uses}{section.1}% 4
+\BOOKMARK [2][-]{subsection.1.4}{Manufacturing}{section.1}% 5
+\BOOKMARK [1][-]{section.2}{Physic}{}% 6
+\BOOKMARK [2][-]{subsection.2.1}{Optical law behind}{section.2}% 7
+\BOOKMARK [2][-]{subsection.2.2}{Principle of operation}{section.2}% 8
+\BOOKMARK [2][-]{subsection.2.3}{Attenuation}{section.2}% 9
+\BOOKMARK [2][-]{subsection.2.4}{Index Fiber}{section.2}% 10
+\BOOKMARK [2][-]{subsection.2.5}{Mode}{section.2}% 11
+\BOOKMARK [2][-]{subsection.2.6}{Fermi-Dirac and Bose-Einstein statistics, Maxwell Boltzmann statistics}{section.2}% 12
+\BOOKMARK [3][-]{subsubsection.2.6.1}{Maxwell-Boltzmann statistics}{subsection.2.6}% 13
+\BOOKMARK [3][-]{subsubsection.2.6.2}{Fermi–Dirac statistics}{subsection.2.6}% 14
+\BOOKMARK [3][-]{subsubsection.2.6.3}{Bose-Einstein statistics}{subsection.2.6}% 15
+\BOOKMARK [1][-]{section.3}{Scattering}{}% 16
+\BOOKMARK [2][-]{subsection.3.1}{Introduction}{section.3}% 17
+\BOOKMARK [3][-]{subsubsection.3.1.1}{Light}{subsection.3.1}% 18
+\BOOKMARK [3][-]{subsubsection.3.1.2}{Quantum theory}{subsection.3.1}% 19
+\BOOKMARK [2][-]{subsection.3.2}{Generality}{section.3}% 20
+\BOOKMARK [2][-]{subsection.3.3}{Rayleigh}{section.3}% 21
+\BOOKMARK [2][-]{subsection.3.4}{Raman scattering}{section.3}% 22
+\BOOKMARK [2][-]{subsection.3.5}{Brillouin Scattering}{section.3}% 23
+\BOOKMARK [2][-]{subsection.3.6}{Fiber Bragg grating \(FBG\)}{section.3}% 24
+\BOOKMARK [1][-]{section.4}{Distributed Temperature Sensing \(DTS\)}{}% 25
+\BOOKMARK [2][-]{subsection.4.1}{Optical Time vs Frequency Domain Reflectometry}{section.4}% 26
+\BOOKMARK [1][-]{section.5}{Calibration}{}% 27
+\BOOKMARK [1][-]{section.6}{Reference Points vs Reference Section}{}% 28
+\BOOKMARK [2][-]{subsection.6.1}{Single-ended DTS}{section.6}% 29
+\BOOKMARK [3][-]{subsubsection.6.1.1}{Direct Method: 3 Temp.}{subsection.6.1}% 30
+\BOOKMARK [3][-]{subsubsection.6.1.2}{Direct Method: 2 Temp.}{subsection.6.1}% 31
+\BOOKMARK [2][-]{subsection.6.2}{Double-ended DTS}{section.6}% 32
+\BOOKMARK [2][-]{subsection.6.3}{Step loss}{section.6}% 33

@@ -1,0 +1,216 @@
+\documentclass[twocolumn]{article}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{amsfonts}
+\usepackage{color,overpic}
+\usepackage{hyperref}
+\usepackage{array} 
+\usepackage{amstext}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{natbib}
+\usepackage{framed}
+\usepackage{float}
+%\usepackage[]{algorithm2e}
+\usepackage{algpseudocode} 
+\usepackage{algorithmicx}
+\usepackage{tabto}
+\usepackage{esint}
+
+\newenvironment{Figure}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+  
+\numberwithin{equation}{section}
+
+\NumTabs{10}
+
+% Turn off header and footer
+\pagestyle{empty}
+\setlist[itemize]{leftmargin=*} % set itemise indentation to leftmargin
+\setlist[enumerate]{leftmargin=*}
+
+\setlist[itemize]{itemsep=0mm}
+\setlist[enumerate]{itemsep=0mm}
+
+\title{Fluid Transport}
+\date{\vspace{-6ex}}
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+\maketitle
+
+
+	\section{Analyse}
+		\subsection{Dell Operator $\nabla$}
+
+			\subsubsection{The gradient}
+The \emph{gradient} of a \emph{scalar field} $f(x,y,z)$ is a vector field function that can be represented as:
+\[ \mbox{grad}\, f = \nabla f = {\partial f \over \partial x} \mathbf{\hat{x}} + {\partial f \over \partial y} \mathbf{\hat{y}} + {\partial f \over \partial z} \mathbf{\hat{z}}\]
+
+			\subsubsection{The divergence}
+The \emph{divergence} of a \emph{vector field} $\vec{v}(x, y, z) = v_x \mathbf{\hat{x}}  + v_y \mathbf{\hat{y}} + v_z \mathbf{\hat{z}}$ is a \emph{scalar field} function that can be represented as:
+\[\mbox{div}\,\vec v = \nabla \cdot \vec v = {\partial v_x \over \partial x} + {\partial v_y \over \partial y} + {\partial v_z \over \partial z} \]
+
+			\subsubsection{The Curl}
+The \emph{Curl} of a vector field $\vec{v}(x, y, z) = v_x\mathbf{\hat{x}}  + v_y\mathbf{\hat{y}} + v_z\mathbf{\hat{z}}$ is a \emph{vector field} function that can be represented as:
+\[\mbox{curl}\;\vec v = \nabla \times \vec v =\left( {\partial v_z \over \partial y} - {\partial v_y \over \partial z} \right) \mathbf{\hat{x}} + \left( {\partial v_x \over \partial z} - {\partial v_z \over \partial x} \right) \mathbf{\hat{y}} + \left( {\partial v_y \over \partial x} - {\partial v_x \over \partial y} \right) \mathbf{\hat{z}} \]
+
+
+			\subsubsection{Laplace operator}
+The \emph{Laplace operator} of either a vector or a scalar fields is a scalar operator that can be represented as:
+\[\Delta = \nabla \cdot \nabla = \nabla^2={\partial^2 \over \partial x^2} + {\partial^2 \over \partial y^2} + {\partial^2 \over \partial z^2} \]
+
+
+
+		\subsection{Derivative}
+		
+			\subsubsection{Dependent and independent variables}
+The ``dependent variable'' represents the output or effect while the ``independent variables'' represent the inputs or causes. 
+
+			\subsubsection{Type of derivative}
+The derivative measures the sensitivity to change of a dependent variable which is determined by another quantity called independent variable. For a function $f(x_1,x_2, \cdots, x_n)$ depending on several variables,
+\begin{itemize}
+	\item His partial derivative (denoted with $\partial$) with respect of one variable $x_i$ keep the others held constant:
+$$\frac{\partial f}{\partial x_i}$$
+	\item And his total derivative with respect to $x_i$ does not assume that the other arguments are constant while $x_i$ varies. The total derivative adds in these indirect dependencies to find the overall dependency of f on $x_i$.
+$$\frac{\operatorname df}{\operatorname dx_i}= \sum_{j=1 }^n \frac{\partial f}{\partial x_j} \frac{\operatorname dx_i}{\operatorname dx_j} =  \frac{\partial f}{\partial x_i} + \sum_{j=1,\cdots,i-1,i+1,\cdots n} \frac{\partial f}{\partial x_j} \frac{\operatorname dx_i}{\operatorname dx_j}$$
+\end{itemize}
+
+			\subsubsection{Chain Rule}
+The chain rule is a formula for computing the derivative of the composition of two or more functions.
+$$\frac{dz}{dx} = \frac{dz}{dy} \cdot \frac{dy}{dx} $$
+
+
+
+
+
+
+
+
+
+\newpage
+	\section{Tools}
+		\subsection{Conserved quantity}
+
+		\subsection{Flux}
+A flux is defined as the rate of flow of a property per unit area, which has the dimensions [quantity]·[time]\textsuperscript{−1}·[area]\textsuperscript{−1} and express as
+$$\boxed{j = \lim \limits_{A \rightarrow 0}\frac{I}{A}=\frac{dI}{dA}}$$
+where $I = \lim\limits_{\Delta t \rightarrow 0}\frac{\Delta q}{ \Delta t} = \frac{dq}{dt}$ is the flow of quantity q per unit time t, and A is the area through which the quantity flows.
+
+Inversely, the total amount $q$ over an area a during a time $t_2-t_1$ with a flux j is computed with
+$$q=\int_{t_1}^{t_2}\iint_S \mathbf{j}\cdot\mathbf{\hat{n}}\,{\rm d}A\,{\rm d}t $$
+
+		\subsection{Incompressible flow}
+
+		\subsection{Diffusion, Advection and Dispersion}
+		
+		\subsection{Convection}
+		
+		\subsection{Lagrangian vs Eulerian}
+
+		\subsection{Gauss theorem}
+
+
+
+
+
+\newpage
+	\section{Continuity equation}
+A \textit{conservation law} states that a particular measurable property of an isolated physical system does not change as the system evolves over time. While it does not mention transport, the \textit{continuity equation} is the correct mathematical expression for a \textit{local} conservation law.
+
+
+The continuity equations states that the amount $q$ can only increased (decresed) with an inward (outward) flow or internal creation.
+\begin{framed}
+$$\frac{d q}{d t} + \oiint \limits_S\mathbf{j} \cdot d\mathbf{S} = \Sigma \quad  \text{or} \quad \frac{\partial \rho}{\partial t} + \nabla \cdot \mathbf{j} = \sigma$$
+\end{framed}
+Where $S$ is any closed surface, $j$ is the flux of $q$, $\rho$ is $q$ per unit volume and $\Sigma$ is the source/sink term.
+
+
+		\subsection{Material derivative}
+$$\frac{D}{Dt} \ \stackrel{\mathrm{def}}{=}\  \frac{\partial}{\partial t} + \mathbf{u}\cdot\nabla $$
+
+
+\newpage
+\section{Navier-Stock}
+\subsection{Newton Second Law of Motion}
+The second law states that the net force $\mathbf{F}$ on an object is equal to the rate of change of its momentum $\mathbf{p}$
+$$ \mathbf{F} = \frac{\mathrm{d}\mathbf{p}}{\mathrm{d}t} = \frac{\mathrm{d}(m\mathbf v)}{\mathrm{d}t} = \frac{{\partial \left( {m\mathbf v } \right)}}{{\partial t}} +  \sum_i\frac{{\partial \left( {m\mathbf v } \right)}}{{\partial x_i}}\frac{{\partial x_i}}{{\partial t}} $$
+
+\subsection{Derivation of the Convective Term}
+
+Momemtum change by convection: 
+\[\int {\frac{{\partial \left| {m\overrightarrow v } \right|}}{{\partial t}}} dt + \left[ {\frac{{\partial m\overrightarrow v }}{{\partial x}}dx} \right] \cdot \overrightarrow i  + \left[ {\frac{{\partial m\overrightarrow v }}{{\partial y}}dy} \right] \cdot \overrightarrow j  + \left[ {\frac{{\partial m\overrightarrow v }}{{\partial z}}dz} \right] \cdot \overrightarrow k \]
+
+Momentum change per time by convection:
+\[\frac{\partial }{{\partial t}}\left\{ {\int {\frac{{\partial \left| {m\overrightarrow v } \right|}}{{\partial t}}} dt + \left[ {\frac{{\partial m\overrightarrow v }}{{\partial x}}dx} \right] \cdot \overrightarrow i  + \left[ {\frac{{\partial m\overrightarrow v }}{{\partial y}}dy} \right] \cdot \overrightarrow j  + \left[ {\frac{{\partial m\overrightarrow v }}{{\partial z}}dz} \right] \cdot \overrightarrow k } \right\}\]
+
+Rewritten:
+\[\frac{{\partial \left| {m\overrightarrow v } \right|}}{{\partial t}} + \left[ {\frac{{\partial m\overrightarrow v }}{{\partial x}}\frac{{\partial x}}{{\partial t}}} \right] \cdot \overrightarrow i  + \left[ {\frac{{\partial m\overrightarrow v }}{{\partial y}}\frac{{\partial x}}{{\partial t}}} \right] \cdot \overrightarrow j  + \left[ {\frac{{\partial m\overrightarrow v }}{{\partial z}}\frac{{\partial x}}{{\partial t}}} \right] \cdot \overrightarrow k \]
+
+For an infinitesimal volume, with uniform density:
+\[\rho \left\{ {\frac{{\partial \left| {\vec v} \right|}}{{\partial t}} + \left[ {\frac{{\partial \vec v}}{{\partial x}}{v_x}} \right] \cdot \vec i + \left[ {\frac{{\partial \vec v}}{{\partial y}}{v_y}} \right] \cdot \vec j + \left[ {\frac{{\partial \vec v}}{{\partial z}}{v_z}} \right] \cdot \vec k} \right\}d\rlap{--} V\]
+
+
+\subsection{Derivation of the Forcing Term}
+\[\sum {\overrightarrow F }  = \overrightarrow {{F_g}}  + \overrightarrow {{F_p}}  + \overrightarrow {{F_f}} + \overrightarrow F \]
+
+\[\overrightarrow {{F_g}}  = m\overrightarrow g \]
+
+\[\overrightarrow {{F_p}}  =  - \left\{ {\frac{{\partial P}}{{\partial x}} + \frac{{\partial P}}{{\partial y}} + \frac{{\partial P}}{{\partial z}}} \right\}d\rlap{--} V =  - \nabla Pd\rlap{--} V\]
+
+\[\overrightarrow {{F_f}}  = \left\{ {\sum\limits_{j = x,y,z}^{} {\sum\limits_{i = x,y,z}^{} {\frac{{\partial {\tau _{i,j}}}}{{\partial j}}} } } \right\}d\rlap{--} V = \nabla  \cdot Td\rlap{--} V\]
+
+\[{\tau _{i,j}} = \left\{ {\begin{array}{*{20}{c}}
+{\mu \left( {\frac{{\partial {v_i}}}{{dj}} + \frac{{\partial {v_j}}}{{di}}} \right)}&{j \ne i}\\
+{ - \frac{2}{3}\mu \nabla  \cdot \overrightarrow v  + 2\frac{{\partial {v_i}}}{{di}}}&{j = i}
+\end{array}} \right.j,i = x,y,z\]
+
+
+Which end up to:
+\[\sum {\overrightarrow F }  =  m\overrightarrow g  - \nabla Pd\rlap{--} V + \nabla  \cdot Td\rlap{--} V + \overrightarrow F \]
+
+\subsection{Finale expression}
+\[\rho \left\{ {\frac{{\partial \left| {\vec v} \right|}}{{\partial t}} + \left[ {\frac{{\partial \vec v}}{{\partial x}}{v_x}} \right] \cdot \vec i + \left[ {\frac{{\partial \vec v}}{{\partial y}}{v_y}} \right] \cdot \vec j + \left[ {\frac{{\partial \vec v}}{{\partial z}}{v_z}} \right] \cdot \vec k} \right\}d\rlap{--} V  =  m\overrightarrow g  - \nabla Pd\rlap{--} V + \nabla  \cdot Td\rlap{--} V + \overrightarrow F \]
+
+\[ \rho \left(\frac{\partial \mathbf{v}}{\partial t} + \mathbf{v} \cdot \nabla \mathbf{v} \right) = -\nabla p + \nabla \cdot\boldsymbol{\mathsf{T}} + \mathbf{f} \]
+
+
+
+
+		
+		
+	\section{Euler Equation}
+the Euler equations are a set of quasilinear hyperbolic equations governing adiabatic and inviscid flow. 
+\begin{align*} 
+{D\bold u \over Dt} = - \nabla w +\bold{g} \\
+\nabla\cdot \bold u=0
+\end{align*}
+		\subsection{The vorticity equation}
+		
+	\section{Convection–diffusion equation}
+The convection–diffusion equation can be easily derived from the continuity equation (\ref{}) where the total flux is composed by a diffusive flux (Fick's law) (ref{}) and an advective flux \ref{}:
+$$\frac{\partial c}{\partial t}  = \nabla \cdot (D \nabla c) - \nabla \cdot (\vec{v} c) + R$$
+
+Comments:
+\begin{itemize}
+	\item Assumption: $D$ and $\vec{v}$ only vary with space and time and not concentration otherwise the equation become non-linear
+	\item Comment simplification:  the diffusion coefficient is constant, there are no sources or sinks, and the velocity field describes an incompressible flow (i.e., it has zero divergence)
+	$$\frac{\partial c}{\partial t}  = D \nabla^2 c - \vec{v} \cdot \nabla c. $$
+\end{itemize}
+
+
+
+
+
+
+
+\bibliographystyle{apalike}
+\bibliography{citations}	
+	
+
+\end{document}

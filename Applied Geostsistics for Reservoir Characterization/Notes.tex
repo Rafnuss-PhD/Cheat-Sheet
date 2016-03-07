@@ -1,0 +1,279 @@
+\documentclass[10pt,landscape]{article}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{esint}
+\usepackage{amsfonts}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+\usepackage{array} 
+\usepackage{amstext}
+\usepackage{enumitem}
+
+
+\newcommand{\volume}{\mathop{\ooalign{\hfil$V$\hfil\cr\kern0.08em--\hfil\cr}}\nolimits}
+
+
+\pdfinfo{
+  /Title (example.pdf)
+  /Creator (TeX)
+  /Producer (pdfTeX 1.40.0)
+  /Author (Seamus)
+  /Subject (Example)
+  /Keywords (pdflatex, latex,pdftex,tex)}
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+    { \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+    {\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+        {\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+        {\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+    }
+
+% Turn off header and footer
+\pagestyle{empty}
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\makeatother
+
+% Define BibTeX command
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Don't print section numbers
+%\setcounter{secnumdepth}{0}
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+%My Environments
+\newtheorem{example}[section]{Example}
+% -----------------------------------------------------------------------
+
+\begin{document}
+\raggedright
+\footnotesize
+\begin{multicols}{3}
+
+
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\setlist[itemize]{leftmargin=*} % set itemise indentation to leftmargin
+\setlist[enumerate]{leftmargin=*}
+
+
+\begin{center}
+     \Large{\underline{Applied Geostatistics for}} \\
+     \Large{\underline{Reservoir Characterization}} \\
+\end{center}
+
+\section{Chap. 2: Principles of Statistics}
+\begin{itemize}
+\item \emph{The relative frequency} ($f_{Ri}$) is the number of measurement falling within particular class i ($f_{i}$)  over the number of data ($n$)  ($f_{Ri}=f_i/n$ with $\sum f_{Ri}=1$).Cumulative relative frequency ($F_{j}$)  sum up the frequency for higher class ($F_j=\sum f_{Ri}$) .\\
+\item Descriptive statistic:\\
+\end{itemize}
+\begin{tabular}{@{}ll@{}}
+$ \bar{x}=1/n \sum{x_i}$ & mean\\
+$x=x_i \quad , f_{i}>f_{j} \forall j$  & mode\\
+$\tilde{x}=x_i \quad , |x_{u<i}| = n/2$  & median\\
+$x_{p\%}=x_i \quad , |x_{u<i}| = p\% \times n$  & percentile\\
+$s^2=1/(n-1) \sum{(x_i-\bar{x})^2}$ & Variance\\
+$C_v = s/\bar{x}$ & Coef. variation\\
+$R=x_{max}-x_{min}$ & Range \\
+\end{tabular}
+\begin{itemize}
+\item Spacial data sets.
+In spacial sampling, bias is introduce when preferential localisation of sampling is used. Sample de-clustering method dived data in subarea and statistical property is computed by assigning a weight to each data according the number of data in its subarea. Moving-Windows Statistics compute statisical summury on a small subset of the data falling within a defined windows. 
+
+\item \emph{Bivariate Distributions.}
+Covariance and Correlations:
+\[C(x,y)=\frac{1}{n} \sum{(x_i-\bar{x})(y_i-\bar{y})} = \frac{1}{n} \sum{x_i y_i} -\bar{x} \bar{y} \]
+\[r(x,y)=\frac{C(x,y)}{s_x s_y}, \quad -1<r<1\]
+
+\item \emph{Linear Regression.} The simple linear equation ($y=mx+b$) present parameter which can be best fit with $m=C(x,y)/s_x^2$ and $b=\bar{y}-m\bar{x}$.
+
+\item \emph{Probability.} Probability that and event A occur can be define as $p(A)=\lim_{n <to \infty}=n_a/n$ ($n_a$: number of times where A occur over $n$ times). Basic law of prob. states that $0\leq p(A) \leq 1$, $p(A)+p(\bar{A}=1)$ and for two event A and B, $p(A \cup B) = p(A) + p(B) -p(A \cap B)$.
+
+\item \emph{Conditional probability} helps to compute the prob. of an event A knowing about the event B such that : $p(A|B)=\frac{p(A \cap B)}{p(B)}$. This can be explain as reducing the sample space to event B. \\
+This idea can be further enlarge to multiple subset of A which compote together the entire space ($\sum{p(A_i)}=1$). So that an event B can be express by subset of A: $p(B)=\sum{p(A_i \cap B)}$. This give the Bayes Theorem:
+\[p(A_j|B) = \frac{p(A_j \cap B)}{\sum{p(A_i \cap B)}} = \frac{p(B|A_j) p(A_j)}{\sum{p(B | A_i) p(A_i)}}\]
+
+\item \emph{Probability function.} The probability mass function ($P(a)$) of a random variable $X$ is $P(a)=p(X=a)$. And for continuous variable, the probability density function $p(a<X<b)=\int_{a}^{b} f(x) dx$. Cumulative distribution function make a cumulative sum : $F(a)=p(X<a)=\int_{-\infty}^{a} f(x) dx$
+
+\item Important Distribution Function.
+\end{itemize}
+\begin{tabular}{lccc}
+Name			& Uniform  & Normal & Log-Normal  \\
+\hline
+$f(x)$ 		& $\frac{1}{b-a}$ 	 	& $\frac{1}{\sigma\sqrt{2\pi}}\, e^{-\frac{(x - \mu)^2}{2 \sigma^2}} $  &  $\frac{1}{x\sigma\sqrt{2\pi}}\ e^{-\frac{\left(\ln x-\mu\right)^2}{2\sigma^2}}$ \\
+$F(x)$      & $\frac{x-a}{b-a}$ 	& $\frac12\left[1 + \operatorname{erf}\left( \frac{x-\mu}{\sigma\sqrt{2}}\right)\right] $ & $\frac12 + \frac12\,\mathrm{erf}\Big[\frac{\ln x-\mu}{\sqrt{2}\sigma}\Big]$ \\
+$E(x)$   	& $\frac{a+b}{2} $ 	&$ \mu$   & $e^{\mu+\sigma^2/2}$ \\
+$ V(x)$	& $\frac{(b-a)^2}{12}$  & $\sigma ^2$ & $(e^{\sigma^2}\!\!-1) e^{2\mu+\sigma^2}$\\
+\end{tabular}
+\begin{itemize}
+\item \emph{Inference} allows estimation of parameters from sample statistic. Unbiased stats that the true parameters is close to the estimated parameter such that $E[\hat{\theta}]=\theta$. Minimum variance states that the variance of the distribution of the estimated parameter should be as small as possible. From this two properties, arise the MVUE technique. 
+\end{itemize}
+
+
+
+
+
+
+\section{Chap. 3: Spacial Relationship}
+
+\subsection{Stationnarity}
+First order: $f(X(\mathbf{u}))=f(X(\mathbf{u}+\mathbf{L}))$
+Second order: $f(X(\mathbf{u}),X(\mathbf{u}+\mathbf{h}))=f(X(\mathbf{u}+\mathbf{h}),X(\mathbf{u}+\mathbf{h}+\mathbf{L}))$
+\subsection{Variogram}
+variogram measure the variance of the difference from two point separate by $\mathbf{L}$.
+\[\gamma(\mathbf{L})=\frac{1}{2}Var\left[X(\mathbf{u}) - X(\mathbf{u}+\mathbf{L})\right]\]
+Expending this definition with first-order stationarity arise to a simplified version
+\[\gamma(\mathbf{L})=\frac{1}{2} E\left[\left(X (\mathbf{u}) - X(\mathbf{u}+\mathbf{L})\right)^2\right] =C(0) -C(\mathbf{L})\]
+Empirical variogram is build by setting a lag distance ($\Delta L$) and lag orientation ($\Delta \theta$). The use of Bandwidth help in point far away. \\
+\begin{tabular}{lc}
+Name			& $x_T(u)$  \\
+\hline
+log-transform 		& $log_{e,10}(x(u))$ 	 	\\
+power-transform		& $[x(u)]^p$ 	 \\
+Rank					& $i/(n+1) $ 	\\
+Indicator transform	& $1 \text{ for } x(u)<x_t \text{ else } 0$   \\
+Normal-score 		& Empirical and Normal CDF\\
+\end{tabular}
+\begin{itemize}
+	\item \emph{The General-Relative Variogram} normalized the conventional variogram with local mean and eliminates the influence of the variation in lag-mean.
+	\item \emph{Pairwise-Relative Variogram} also normalized but by the pair mean rather  than lag mean.
+	\item \emph{Non-ergodic Variogram}
+	\item The following parameters are often used to describe variogram:
+	\begin{itemize}
+		\item \emph{nugget} n: The height of the jump of the semi-variogram at the discontinuity at the origin.
+		\item \emph{sill} s: Limit of the variogram tending to infinity lag distances.
+		\item \emph{range} r: The distance in which the difference of the variogram from the sill becomes negligible.
+	\end{itemize} 
+	\item In modelling variogram, two rules need to be apply (1) uses of minimum number of param. and (2) positive defineness.
+\end{itemize}
+\begin{tabular}{lcc}
+Name			& $\gamma(h)$  & $C(L)$  \\
+\hline
+Exponential 		& $C_0 \left[1-\exp\left(\frac{-3L}{r}\right)\right]$ 	& $C_0 \exp\left(\frac{-3L}{r}\right)$\\
+Spherical		& $C_0 \left[\frac{3L}{2r}-\frac{L^3}{2r^3}\right]$		& $C_0 \left[1-\frac{3L}{2r}+\frac{L^3}{2r^3}\right]$ \\
+Gaussian 		& $C_0 \left[1-\exp\left(\frac{-3L^2}{r^2}\right)\right]$& $C_0 \exp\left(\frac{-3L^2}{r^2}\right)$\\ 
+\multicolumn{3}{l}{no-sill (Fractional Gaussian Noise or Brownian Motion)}\\
+Logarithmic 		& $C_0 \log L$&\\
+Sin		 		& $C_0\left[1-\frac{\sin(rL)}{L}\right]$ 				& $C_0\frac{\sin(rL)}{L}$\\
+Cos		 		& $C_0\left[1-\cos(rL)\right]$ 							& $C_0\cos(rL)$\\
+\end{tabular}
+\begin{itemize}
+	\item \emph{Cross Variogram}
+\[\gamma(\mathbf{L})=\frac{1}{2}E\left[X(\mathbf{u}) - X(\mathbf{u}+\mathbf{L})\right] \left[Y(\mathbf{u}) - Y(\mathbf{u}+\mathbf{L})\right]\]
+	\item \emph{Multipoint Histogram} allows definition of the connectivity of multipoint instead of only 2 points as the variogram does.
+\end{itemize}
+
+
+
+
+
+
+
+
+\section{Conventional Estimation}
+\begin{itemize}
+	\item \emph{Simple Kriging} is using MVUE, resulting in the linear
+\[X^*(\mathbf{u_0})=\lambda_0 + \sum{\lambda_i X(\mathbf{u_0})} \left\{
+  \begin{array}{l}
+   E[X^*(\mathbf{u_0})-X(\mathbf{u_0})]=0\\
+    \min{ {\sigma^2[X(\mathbf{u_0})-X^*(\mathbf{u_0}) }}]
+  \end{array}
+\right.\]	
+ system $|\Lambda|=|C|^{-1}|c|$ can be solved and the error variance of the estimate : $\hat{\sigma_E^2}=C(u_0,u_0)-\sum{\lambda_i C(u_i,u_0)}$. The weight ($\lambda$) is assigned according to his spatial relationship to (1) the unsampled location and (2) to the other point. The error variance is equal to variance in the absence of spacial information. Variogram could replace covariance in all equation. Simple krigging assume cst mean over space.
+	\item \emph{Cross validation} 
+	\item \emph{Block Estimation} take for account that the estimated location is not a point but as an area associate. It does the same thing as compute point and arithmetique average (not good for permeability) them within the cell but does it more efficiently.
+	\item \emph{Ordinary Kriging} doesn't assume first-order stationary (mean). It uses the method of the Lagrangian multiplier and finish in a similar matrix.
+	\item \emph{Cokriging} is used to estimate one variable (primary) value knowing other sampled variables (covariables). It use the assumption that the variables are spatially related with a linear relationship. The relationship must be strong: (1) high correlation, (2) physical link and (3) good history matching. This procedure is very computer expensive.
+	\item \emph{Universale kriging} procedure is used in presence of a trend. 
+	\item \emph{Log-Normal Kriging} is a non-linear krigging procedure which (1) reduces the variability of sample point and (2) transform log-normal distributed variables in normale distribution. The back-transforme depend on error variance. (not very used)
+	\item \emph{Multi-gaussian} convert with a normal z-score the data. 
+	\item \emph{Indicator Kriging} final result represent the uncertain distribution at unsampled location (instead of single value) and has not simple back transform which therefore require a conditional simulation technique. Indicator variable express the confidence in the sample values. It therefore allows incomplete or soft information (value less than 1). There are not distribution assumed in the data.
+\[I(u_j,x_t) = \left\{
+	\begin{array}{l}
+		1 \text{, if }X(u_j)<x_t\\
+		0 \text{, if }X(u_j)>x_t
+	\end{array}
+\right.\]	
+
+\end{itemize}
+
+
+
+
+\section{Conditional Simulation}
+Three characteristic distinguish conventional estimation to conditional simulation:
+\begin{enumerate}
+\item \emph{Sample Variability.} Because of the linear relationship, conventional estimation never reproduce extreme value while conditional simulation can keep the distribution very well if desire.
+\item \emph{Sample Spatial relationship.} Firstly, because of 1., the variance of the estimation is smaller than the observation and therefore the variogram as a smaller sill. Secondly, because estimation does not use previously estimated value in the construction of the weight, some of the spacial relationship can't be kept. Simulation technique reuse simulated value as known value and preserve the variogram better.
+\item \emph{Uncertainty.} In conventional estimation, the error variance $\sigma_E$ describe surrounding error but not local. Conditional simulation build equal likely realisation. Uncertainty can be estimate from these different possible realisation.
+\end{enumerate}
+
+
+
+
+
+\section{Grid-base Simulation Methods}
+
+\subsection{Sequential}
+5 steps:
+\begin{enumerate}
+	\item Transform (Indicator and Gaussian)
+	\item Model variogram
+	\item Select random path
+	\item Sequentially estimate value. Simulation depend on the path because the previously simulated value are reused. We can set a max nb of value reused or ratio data/simulated value.
+	\item Back transform
+\end{enumerate}
+
+
+\subsection{Cosimulation}
+Cosimulation extend sequential simulation by simulating multiple attributes simultaneously. It is based on a cokrigging approch and require linear relationship between attribute. Again, the procedure follows the same 5 steps:
+\begin{enumerate}
+	\item Transform: Indicator for discrete and Gaussian for continuous. We need linear relationship in transform domain between the attribute in order to apply cokrigging technique.
+	\item Model variogram : one for every threshold value in indicator transform but also cross-variogram for each dependences 
+	\item Select random path
+	\item Sequentially estimate value. We simulate in order from the least dependent attribute to the most dependant. For cokriging procedure, assuming gaussian distribution:
+	\[X_k^*(\mathbf{u_0}) = \sum^{n_k}{\lambda_{i_k}X_k(\mathbf{u_i})}  + \sum^L\sum^{n_l}{\lambda_{j_l}X_l(\mathbf{u_j})} \]
+	\item Back transform
+\end{enumerate}
+
+\subsection{Probability Field Simultation}
+Once the posteriory distribution is known, a uniform random number is pick up to determine his value. Probability field simulations minimizes the short-scale variability by creating a spacial correlation in the number pick up
+
+\subsection{Simulated Annealing}
+This method honor unvariate statistic, spacial relationship and relationship with other attribute. It futher incorporate other constraints, however, it is very computer expensive.
+
+
+\section{Scaleup}
+
+
+\end{multicols}
+\end{document}

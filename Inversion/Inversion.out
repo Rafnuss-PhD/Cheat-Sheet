@@ -1,0 +1,38 @@
+\BOOKMARK [1][-]{section.1}{Inverse Problem Formulation}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Classification}{section.1}% 2
+\BOOKMARK [1][-]{section.2}{Tool}{}% 3
+\BOOKMARK [2][-]{subsection.2.1}{Probability}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.2}{Homogeneous Probability Distribution}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.3}{Condition number}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.4}{Sensitivity coefficient}{section.2}% 7
+\BOOKMARK [1][-]{section.3}{General Formulation}{}% 8
+\BOOKMARK [2][-]{subsection.3.1}{Forward Model}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.2}{A priori information}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.3}{Inverse Problem}{section.3}% 11
+\BOOKMARK [1][-]{section.4}{Least-Square Problem}{}% 12
+\BOOKMARK [2][-]{subsection.4.1}{Linear least squares}{section.4}% 13
+\BOOKMARK [2][-]{subsection.4.2}{Ordinary least squares}{section.4}% 14
+\BOOKMARK [2][-]{subsection.4.3}{Constrainted Least-square}{section.4}% 15
+\BOOKMARK [2][-]{subsection.4.4}{Non-linear least square}{section.4}% 16
+\BOOKMARK [1][-]{section.5}{Maximum Likelihood}{}% 17
+\BOOKMARK [2][-]{subsection.5.1}{Maximum Likelihood Estimate \(MLE\)}{section.5}% 18
+\BOOKMARK [2][-]{subsection.5.2}{Maximum A Posteriori estimation \(MAP\)}{section.5}% 19
+\BOOKMARK [1][-]{section.6}{More simplier way}{}% 20
+\BOOKMARK [2][-]{subsection.6.1}{Probabilistic framework}{section.6}% 21
+\BOOKMARK [2][-]{subsection.6.2}{Optimization}{section.6}% 22
+\BOOKMARK [2][-]{subsection.6.3}{Regularization}{section.6}% 23
+\BOOKMARK [2][-]{subsection.6.4}{Resolution Matrix}{section.6}% 24
+\BOOKMARK [3][-]{subsubsection.6.4.1}{Data Resolution Matrix}{subsection.6.4}% 25
+\BOOKMARK [3][-]{subsubsection.6.4.2}{Model Resolution Matrix}{subsection.6.4}% 26
+\BOOKMARK [3][-]{subsubsection.6.4.3}{Covariance Resolution Matrix}{subsection.6.4}% 27
+\BOOKMARK [1][-]{section.7}{Solution}{}% 28
+\BOOKMARK [2][-]{subsection.7.1}{Linear Problem: Invertible}{section.7}% 29
+\BOOKMARK [3][-]{subsubsection.7.1.1}{Back \(Forward\) substitution}{subsection.7.1}% 30
+\BOOKMARK [3][-]{subsubsection.7.1.2}{Factor and Solve methods}{subsection.7.1}% 31
+\BOOKMARK [3][-]{subsubsection.7.1.3}{Gauss elimination}{subsection.7.1}% 32
+\BOOKMARK [3][-]{subsubsection.7.1.4}{Cramer's rule}{subsection.7.1}% 33
+\BOOKMARK [2][-]{subsection.7.2}{Linear Problem : not Invertible}{section.7}% 34
+\BOOKMARK [3][-]{subsubsection.7.2.1}{Pseudo-Inverse}{subsection.7.2}% 35
+\BOOKMARK [3][-]{subsubsection.7.2.2}{Newton's method}{subsection.7.2}% 36
+\BOOKMARK [2][-]{subsection.7.3}{Non-linear Problem}{section.7}% 37
+\BOOKMARK [3][-]{subsubsection.7.3.1}{Non-linear least square - Newton's Method}{subsection.7.3}% 38

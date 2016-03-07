@@ -1,0 +1,24 @@
+\BOOKMARK [1][-]{section.1}{Basic Definition}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Matrix operation}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Square Matrix}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.3}{Main Operation}{section.1}% 4
+\BOOKMARK [1][-]{section.2}{Other stuff}{}% 5
+\BOOKMARK [2][-]{subsection.2.1}{Set, Field, Vector space, Span and Basis}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.2}{Linear dependence}{section.2}% 7
+\BOOKMARK [2][-]{subsection.2.3}{Eigenvalues and eigenvectors}{section.2}% 8
+\BOOKMARK [2][-]{subsection.2.4}{Inner Product}{section.2}% 9
+\BOOKMARK [2][-]{subsection.2.5}{Complete Space}{section.2}% 10
+\BOOKMARK [2][-]{subsection.2.6}{Projection}{section.2}% 11
+\BOOKMARK [2][-]{subsection.2.7}{Gram-Schmidt Process}{section.2}% 12
+\BOOKMARK [2][-]{subsection.2.8}{Inversion}{section.2}% 13
+\BOOKMARK [2][-]{subsection.2.9}{Generalized and pseudo inverse}{section.2}% 14
+\BOOKMARK [2][-]{subsection.2.10}{Positive-Define Matrix}{section.2}% 15
+\BOOKMARK [1][-]{section.3}{Matrix decomposition}{}% 16
+\BOOKMARK [2][-]{subsection.3.1}{Decompositions related to solving systems of linear equations}{section.3}% 17
+\BOOKMARK [3][-]{subsubsection.3.1.1}{LU factorization}{subsection.3.1}% 18
+\BOOKMARK [3][-]{subsubsection.3.1.2}{QR factorization }{subsection.3.1}% 19
+\BOOKMARK [3][-]{subsubsection.3.1.3}{Cholesky decomposition}{subsection.3.1}% 20
+\BOOKMARK [2][-]{subsection.3.2}{Decompositions based on eigenvalues and related concepts}{section.3}% 21
+\BOOKMARK [3][-]{subsubsection.3.2.1}{Eigendecomposition}{subsection.3.2}% 22
+\BOOKMARK [3][-]{subsubsection.3.2.2}{Takagi's factorization}{subsection.3.2}% 23
+\BOOKMARK [3][-]{subsubsection.3.2.3}{Singular Value Decomposition}{subsection.3.2}% 24

@@ -1,0 +1,79 @@
+\begin{thebibliography}{}
+
+\bibitem[{De Marsily} et~al., 1984]{de1984interpretation}
+{De Marsily}, G., Lavedan, G., Boucher, M., and Fasanino, G. (1984).
+\newblock {Interpretation of interference tests in a well field using
+  geostatistical techniques to fit the permeability distribution in a reservoir
+  model}.
+\newblock {\em Geostatistics for natural resources characterization, Part},
+  2:831--849.
+
+\bibitem[Deutsch, 1993]{deutsch1993conditioning}
+Deutsch, C.~V. (1993).
+\newblock {Conditioning reservoir models to well test information}.
+\newblock In {\em Geostatistics Tr\{\'{o}\}ia’92}, pages 505--518. Springer.
+
+\bibitem[Hu, 2000]{Hu2000}
+Hu, L.~Y. (2000).
+\newblock {Gradual deformation and iterative calibration of Gaussian-related
+  stochastic models}.
+\newblock {\em Mathematical Geology}, 32(1):87--108.
+
+\bibitem[Hu, 2002]{Hu2002}
+Hu, L.~Y. (2002).
+\newblock {Combination of dependent realizations within the gradual deformation
+  method}.
+\newblock {\em Mathematical Geology}, 34(8):953--963.
+
+\bibitem[Hu and Blanc, 1998]{hu1998constraining}
+Hu, L.~Y. and Blanc, G. (1998).
+\newblock {Constraining a reservoir facies model to dynamic data using a
+  gradual deformation method}.
+\newblock In {\em 6th European Conference on the Mathematics of Oil Recovery}.
+
+\bibitem[Hu and {Le Ravalec-Dupin}, 2004]{Hu2004}
+Hu, L.~Y. and {Le Ravalec-Dupin}, M. (2004).
+\newblock {An improved gradual deformation method for reconciling random and
+  gradient searches in stochastic optimizations}.
+\newblock {\em Mathematical Geology}, 36(6):703--719.
+
+\bibitem[Hu et~al., 2001]{Hu2001}
+Hu, L.~Y., {Le Ravalec-Dupin}, M., and Blanc, G. (2001).
+\newblock {Gradual deformation and iterative calibration of truncated
+  \{Gaussian\} simulations}.
+\newblock {\em Petroleum Geoscience}, 7(4):25--30.
+
+\bibitem[Journel and Huijbregts, 1978]{journel1978mining}
+Journel, A.~G. and Huijbregts, C.~J. (1978).
+\newblock {\em {Mining geostatistics}}.
+\newblock Academic press.
+
+\bibitem[{Le Ravalec-Dupin} and Noetinger, 2002]{LeRavalec-Dupin2002}
+{Le Ravalec-Dupin}, M. and Noetinger, B. (2002).
+\newblock {Optimization with the gradual deformation method}.
+\newblock {\em Mathematical Geology}, 34(2):125--142.
+
+\bibitem[{Le Ravalec-Dupin} et~al., 2000]{LeRavalec2000}
+{Le Ravalec-Dupin}, M., Noetinger, B., and Hu, L.~Y. (2000).
+\newblock {The FFT moving average (FFT-MA) generator: An efficient numerical
+  method for generating and conditioning Gaussian simulations}.
+\newblock {\em Mathematical Geology}, 32(6):701--723.
+
+\bibitem[Oliver et~al., 1997]{Oliver1997}
+Oliver, D.~S., Cunha, L.~B., and Reynolds, A.~C. (1997).
+\newblock {Markov chain Monte Carlo methods for conditioning a permeability
+  field to pressure data}.
+\newblock {\em Mathematical Geology}, 29(1):61--91.
+
+\bibitem[Roggero and Hu, 1998]{roggero1998gradual}
+Roggero, F. and Hu, L.~Y. (1998).
+\newblock {Gradual deformation of continuous geostatistical models for history
+  matching}.
+\newblock In {\em SPE annual technical conference}, pages 221--236.
+
+\bibitem[Srivastava and Others, 1994]{srivastava1994interactive}
+Srivastava, R.~M. and Others (1994).
+\newblock {The interactive visualization of spatial uncertainty}.
+\newblock {\em SPE}, 27965:87--95.
+
+\end{thebibliography}

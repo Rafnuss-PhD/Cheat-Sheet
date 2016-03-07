@@ -1,0 +1,22 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Objetif}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Other technique}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.3}{History and Developement}{section.1}% 4
+\BOOKMARK [1][-]{section.2}{Basic Description}{}% 5
+\BOOKMARK [2][-]{subsection.2.1}{Gaussian related Stochastic models}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.2}{Gradual Deformation}{section.2}% 7
+\BOOKMARK [1][-]{section.3}{Extension}{}% 8
+\BOOKMARK [2][-]{subsection.3.1}{Structural parameter}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.2}{Conditioning Kriging}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.3}{Multidimentional Gradual Deformation}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.4}{Indicator variable}{section.3}% 12
+\BOOKMARK [2][-]{subsection.3.5}{Local and Regionalized}{section.3}% 13
+\BOOKMARK [2][-]{subsection.3.6}{Way to combine them}{section.3}% 14
+\BOOKMARK [1][-]{section.4}{General Utilisation}{}% 15
+\BOOKMARK [2][-]{subsection.4.1}{History Matching}{section.4}% 16
+\BOOKMARK [2][-]{subsection.4.2}{Advance Optimization: Prior constraint}{section.4}% 17
+\BOOKMARK [2][-]{subsection.4.3}{Iterative Calibration of Sequential \(not necessary Gaussian\) Simulation}{section.4}% 18
+\BOOKMARK [2][-]{subsection.4.4}{Uncertainty}{section.4}% 19
+\BOOKMARK [2][-]{subsection.4.5}{Combining Dependant Realization}{section.4}% 20
+\BOOKMARK [1][-]{section.5}{Limitation}{}% 21
+\BOOKMARK [1][-]{section.6}{To go futher}{}% 22

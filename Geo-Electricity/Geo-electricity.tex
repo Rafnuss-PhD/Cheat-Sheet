@@ -1,0 +1,94 @@
+\documentclass[twocolumn]{article}
+\usepackage{movie15}
+\usepackage{animate}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{amsfonts}
+\usepackage{color,overpic}
+\usepackage{hyperref}
+\usepackage{array} 
+\usepackage{amstext}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{natbib}
+\usepackage{framed}
+\usepackage{float}
+
+\newenvironment{Figure}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+  
+\numberwithin{equation}{section}
+
+\graphicspath{ {./Illustration/} }
+
+% Turn off header and footer
+\pagestyle{empty}
+
+\setlist{leftmargin=0cm}
+\setlist{noitemsep}
+
+\title{Electricity in the Soil}
+\date{\vspace{-6ex}}
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+\maketitle
+
+
+
+
+\newpage
+\section{Electrical Law}	
+
+	\subsection{Basic Definition}
+\begin{tabular}{@{}ll@{}}
+$\boldsymbol{F_1}=\frac{q_1q_2}{4\pi\varepsilon_0} \frac{\boldsymbol{\hat{r}_{21}}}{ |\boldsymbol{r_{21}}|^2}, $ & Coulomb's law\\
+$\mathbf{E}\equiv \frac{\mathbf{F}_{q}}{q}$ & Definition of electric field\\
+$V = - \int_C \mathbf{E} \cdot \mathrm{d} \boldsymbol{\ell} \, $ & Electrical potential \\
+$I = \frac{dq}{dt}$ & Intensity or current\\
+$R = V/I$  & Ohm's law for resistance \\
+$I=\int\mathbf{J}\cdot d\mathbf{A}$ & Current Flux\\
+$\mathbf{J} = \sigma \mathbf{E}$ & Reformulation of Ohm's law \\
+$R = \rho \frac{\ell}{A}$ & Pouillet's Law\\
+$\Phi_E = \iint_S \mathbf{E} \cdot d\mathbf{S}$ & Definition of Electric Flux \\
+$\lambda_q = \frac{d q}{d \ell}\,, \sigma_q = \frac{d q}{d S}\,, \rho_q =\frac{d q}{d \volume}$ & Density charges \\
+$  \boldsymbol{D} = \varepsilon_0  \boldsymbol{E} +  \boldsymbol{P} $ & Electric displacement field \\
+\end{tabular}
+
+	\subsection{From Coulomb to ...}
+From Coulomb's law and the definition of Electric field
+\[ \mathbf{E} = \frac{q}{4\pi\varepsilon_0 r^2}  \] 
+And we get Gauss Law
+\[ \Phi_E = \oiint_S \frac{q}{4\pi\varepsilon_0 r^2} \cdot \mathrm{d}\mathbf{S} = \frac{q}{\varepsilon_0}\]
+And Using the Divergence Theorem (in/out = change inside), we can get the differential form of Gauss Law
+\[ \iiint_V\left(\mathbf{\nabla}\cdot\mathbf{E}\right)\,dV=\oiint_S(\mathbf{E}\cdot\mathbf{n})\,dS .\]
+\[\nabla \cdot \mathbf{E} = \frac{\rho_q}{\varepsilon_0}\]
+An finally with $\mathbf{E} = -\nabla \cdot V$, we get Poisson's equation
+ \[ {\nabla}^2 V = -\frac{\rho_q}{\varepsilon_0} \]
+
+
+Continuity equation apply to charge density :
+\[  \nabla \cdot \mathbf{J} = - \frac{\partial \rho_q}{ \partial t}  \]
+And with $I = \frac{dq}{dt}$, $\mathbf{J} = \sigma \mathbf{E}$ and with linear charge density  $\rho_q =\frac{d q}{d V}$:
+\[ \nabla \cdot (\sigma \mathbf{E}) = -\frac{\partial}{\partial t} \left(  \frac{dq}{d\volume}\right)\]
+With a constant (over time) point charge $q$ at the origine $\rho_q(r) = q\delta(r)$
+\[ \nabla \cdot (\sigma \nabla V) =-I \delta (r) \]
+
+
+
+
+
+
+
+
+
+\bibliographystyle{apalike}
+\bibliography{citations}	
+	
+
+\end{document}

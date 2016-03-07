@@ -1,0 +1,325 @@
+\documentclass[twocolumn]{article}
+\usepackage{calc}
+\usepackage[top=1cm,left=1cm,right=1cm,bottom=1cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{esint}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+\usepackage{array} 
+\usepackage{amstext}
+
+
+\newcommand{\volume}{\mathop{\ooalign{\hfil$V$\hfil\cr\kern0.08em--\hfil\cr}}\nolimits}
+
+
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+%My Environments
+% -----------------------------------------------------------------------
+
+\begin{document}
+
+\begin{center}
+     \Large{Hydrogeologie} \\
+\end{center}
+
+\section{Porosity}
+\begin{tabular}{@{}ll@{}}
+$ V_t=V_s+V_p$ & Total volume\\
+$ V_p=V_a+V_w$ & Pore volume\\
+$ \Phi={V_p}/{V_t}$   & Total porosity \\
+\\
+$ S={V_w}/{V_p}$ & Water saturation\\
+$ \theta ={V_w}/{V_t}$ & water content\\
+$\theta=\Phi S$ &\\
+$ S_e = \frac{\theta -\theta_s}{\theta_r-\theta_s}$ & Effective saturation\\
+\\
+$ r_h=\frac{A}{P} $  & Hydraulic radius \\
+$ T= \left(\frac{L_a}{L}\right)^2 $ & Tortuosity \\
+$ S_p= \frac{S}{m}$ & Specific surface area\\
+\end{tabular}
+with,
+\begin{tabular}{@{}ll@{}}
+$A$    & cross sectional area of flow  \\
+$P$    & wetted perimeter \\
+$F$ 	& Electrical formation factor\\
+$S$ & Surface area\\
+$m$ & masse\\
+\end{tabular}
+
+\begin{itemize}
+	\item The porosity generated at the genesis of the rock (organogensis, clastic sedimentation) is called ``Primary'' and the one resulting from its geological history as the ``secondary'' (eg. tectonic or chemical process).
+	\item The interconnected porosity consider only connected pore (electrical current and fluid can flow amongst them). Not very well define: depend on the scale, and gradual connection...
+	\item Effective porosity is related to pore allowing free fluids. 
+	\item Influence of grain properties: (1) $d_{50} \nearrow \Rightarrow\Phi \searrow$ (theoretical independant), (2) grain sorting $\nearrow \Rightarrow\Phi \nearrow$ and (3) rounder grain $\nearrow \Rightarrow \Phi \searrow$
+	\item Porosity increase with depth (or pressure to be more precise). Many empirical equation exist (mainly exponential). For sandstone or sedimentary, it is roughly 5\% decrease in 100m and 40\% in 1km. 
+	\item 
+\end{itemize}
+
+
+
+
+\section{Hydraulic Conductivity}
+Hydraulic conductivity has first be discover with the very famous Darcy's law which found a propotionallity bewteen the discharge and the head difference:
+$$Q=K\frac{\Delta P}{\Delta L}$$
+
+It has since be derived from Navier-Stokes equation :
+$$\boldsymbol{q}=-\frac{\kappa}{\mu}\left(\boldsymbol{\nabla} p -\rho \boldsymbol{g}\right)$$
+
+Note $\kappa$ is the intrinsic permeability of the medium [L$^2$] while K is the hydraulic conductivity depending on the fluid [L/T] and can be related with:
+$$ K=\frac{\kappa \rho_wg}{\mu} $$
+
+This is for saturated medium otherwise, the saturated and relative K are used:
+$$ K=K_rK_s$$
+
+Allen Hazen (1893?) derived an empirical formula:
+$$ K_s=C d_{10} $$
+where $d_ {10}$ is the effective grain size for which 10\% is finer
+
+
+Navier Stockes Equations
+%http://en.wikipedia.org/wiki/Hagen%E2%80%93Poiseuille_flow_from_the_Navier%E2%80%93Stokes_equations
+Hagen-Poiseuille Equation
+Couette Flow
+
+The Kozeny-Carman equation comes from Poiseuille Equation
+$$v=\frac{\Delta(P)}{\eta L}\frac{\phi^{3}}{KS^{2}(1-\phi)^{2}}$$
+
+And where:
+$$\kappa = \frac{d^2}{180} \frac{\phi^3}{(1-\phi)^2}$$
+ where d is Grain size.
+
+\begin{tabular}{@{}ll@{}}
+$a$  & Tube factor shape. \\
+$F$ & Electrical formation factor\\
+\end{tabular}
+
+\section{Capillary Equations}
+Young-Lapace Equation:
+\[ \Delta p = -\gamma \nabla \dot \hat{n}=2\gamma H\]
+Jurin's Law
+\[ \psi=-\frac{2\gamma \cos \theta}{\rho_w g r}\]
+\begin{tabular}{@{}ll@{}}
+$\gamma$  & surface tension. \\
+$H$ & mean curvature.\\
+$\psi$ & capillary head.\\
+$\theta$ & contact angle.\\
+$r$ & radius of the tube
+\end{tabular}
+
+\section{Soil moisture characteristic}
+Van Genuchten Equation (1980):
+\[ S_e = \frac{1}{\left[ 1 + \alpha \psi^n \right]^m}\]
+Mualem's Equation (1976)
+\[ K_r= \sqrt{S_e} \left[ \frac{\int_0^{S_e}{dS_e / |\psi|}}{\int_0^1{dS_e/|\psi|}} \right] ^2 \]
+\begin{tabular}{@{}ll@{}}
+$\gamma$  & surface tension. \\
+$H$ & mean curvature.\\
+$\psi$ & capillary head.\\
+$\theta$ & contact angle.\\
+$r$ & radius of the tube
+\end{tabular}
+
+
+\section{Electrical Properties}
+
+\subsection{General definition}
+\[ \sigma^* = \frac{1}{\rho^*}=i \omega \varepsilon^* \]
+\[ \sigma^* = |\sigma|e^{i\phi_\sigma} =\sigma' +i\sigma''\]
+\[ \varepsilon = \varepsilon_r\varepsilon_0=(1+\chi)\varepsilon_0\]
+\[ \kappa=\varepsilon_r=\frac{\varepsilon}{\varepsilon_0}\]
+
+\subsection{Permittivity}
+Refractive Index model (RI) for sat. and unsat.
+\[ \sqrt{\varepsilon_{r,eff}} =n\sqrt{\varepsilon_{r,w}} +(1-n)\sqrt{\varepsilon_{r,s}}\] 
+\[ \sqrt{\varepsilon_{r,eff}} =\theta\sqrt{\varepsilon_{r,w}} +(n-\theta)\sqrt{\varepsilon_{r,a}}+(1-n)\sqrt{\varepsilon_{r,s}}\]
+ 
+\subsection{Electrical Conductivity}
+Archie's empirical law (1942) for sat. and unsat.
+\[ \sigma_{eff,sat} = \frac{\sigma_w}{F} (+\sigma_{surface})\]
+\[\sigma_{surface}= \left\{
+  \begin{array}{lr}
+    \frac{BQ_v}{F} & \left\{
+    				\begin{array}{l}
+    					B=\alpha[1-\beta \exp(-\gamma\sigma_w)]\\
+    					B=1.93m/(1+0.7/\sigma_m)
+    				\end{array} \right. \\ 
+    \frac{\Sigma_s S_p}{f} &
+  \end{array}
+\right.\]
+\[ \sigma_{eff}=\sigma_{eff,sat}S^d\]
+\[\sigma_{eff}= \left\{
+  \begin{array}{lr}
+    \sigma_{eff,sat}S^d &  \text{for } S>0.2\\ 
+    \sigma_{w}n^mS^d & \text{if } \sigma_{surface}=0\\
+    (\sigma_{w}+BQ_v/S)\frac{S^d}{F} & \text{(Waxman and Smits,1968)}\\
+    \sigma_w \theta^m & \text{for/if } d=m,\sigma_{surface}=0\\
+    \sigma_w \theta T_c(\theta)+\sigma_{surface} & Tc(\theta)=a\theta+b
+  \end{array}
+\right.\]
+In a homogenous soil with a one-point current
+\[V=\frac{\rho I}{2\pi r}\]
+\subsection{Induced Polarisation}
+\begin{tabular}{@{}ll@{}}
+$\phi_\rho=\tan^{-1}\left(\rho''/\rho'\right)$  & CR phase. \\
+$PFE=100\frac{\rho\left(\omega_1\right)-\rho\left(\omega_0\right)}{\rho\left(\omega_0\right)}$  & percent frequency effect \\
+$M=\frac{V_s}{V_{p}}=\frac{1}{V_{p}\left(t_1-t_0\right)}\int_{t_0}^{t_1}V(t)dt$  & chargeability \\
+\end{tabular}
+\[\sigma^*=\frac{1}{F}\left(\sigma_w+BQ_v\right)+i\frac{\lambda Q_v}{Fn}\]
+Relation KC type where $S_p$ is replace with a power law of $\sigma''$
+\[ K_s=\frac{a}{FS_p^c}=\frac{a}{F(b\sigma''^p)^c}\]
+Or Hazen type
+\[ K_s=a(\sigma'')^b\]
+\subsection{Coomplex Conductivtity}
+Havriliak-Negami (HN)
+\[ \varepsilon^*(\omega) = \left( \varepsilon_\infty + \frac{\sigma_{dc}}{i\omega}\right) \frac{\Delta \varepsilon}{ \left( 1+\left( i \omega \tau_0\right) ^{1-\alpha} \right) ^{\beta} } \]
+Constnat Phase-Angle (CPA)
+\[ \sigma^*(\omega)=(\sigma_{dc}+i\omega \varepsilon_\infty) + \sigma_0(\omega/\omega_0)^p e^{ip\pi/2} \]
+The Bruggeman-Hanai-Sen (BHS) effective medium model
+\[ \varepsilon^*=\varepsilon_w^*n^m\left(\frac{1-\varepsilon_s^*/\varepsilon_w^*}{1-\varepsilon_s^*/\varepsilon^*}\right)^m\]
+\[\varepsilon_w^*=\varepsilon_{r,w}\varepsilon_0 + i\omega\sigma_w\]
+\subsection{Legend}
+\begin{tabular}{@{}ll@{}}
+$\sigma^*,|\sigma|,\phi_\sigma,\sigma',\sigma''$	& conductivity (complex). \\
+$\rho^*,|\rho|,\phi_\rho,\rho',\rho''$  			& complex resistivity. \\
+$\varepsilon_{,r,0}^*$ 								& permittivity (relative, vaccum). \\
+$\kappa =\varepsilon_r$ 							& dielectric constant\\
+$\omega=2\pi f =1/\tau$  						& angular frequency, relaxation time \\
+$\chi$ 											& electric susceptibility.\\
+$F=T/n = n^{-m}$ 								& Electrical formation factor\\
+$Q_v$ 											& cation exchange capacity (clay content)\\
+$B$ 												& Ionic conductance of $Q_v$\\
+$f$ 												& parameter of tortuosity\\
+$m$ 												& cementation index (1.3<2.0)\\
+$\Sigma_s$ 										& specific surface conductance\\
+$f$ 												& parameter of tortuosity (F)\\
+$d$ 												& saturation index (usally >m)\\
+$\lambda$ 										& effective img. conductance\\
+$\Delta \varepsilon = \varepsilon_{static} -\varepsilon_\infty$ & dielectric increment
+\end{tabular}
+
+
+
+
+
+
+
+
+\section{How to get to Poisson Law}
+\subsection{Basic equation}
+\begin{tabular}{@{}ll@{}}
+$\boldsymbol{F_1}=\frac{q_1q_2}{4\pi\varepsilon_0} \frac{\boldsymbol{\hat{r}_{21}}}{ |\boldsymbol{r_{21}}|^2}, $ & Coulomb's law\\
+$\mathbf{E}\equiv \frac{\mathbf{F}_{q}}{q}$ & Definition of electric field\\
+$V = - \int_C \mathbf{E} \cdot \mathrm{d} \boldsymbol{\ell} \, $ & Electrical potential \\
+$I = \frac{dq}{dt}$ & Intensity or current\\
+$R = V/I$  & Ohm's law for resistance \\
+$I=\int\mathbf{J}\cdot d\mathbf{A}$ & Current Flux\\
+$\mathbf{J} = \sigma \mathbf{E}$ & Reformulation of Ohm's law \\
+$R = \rho \frac{\ell}{A}$ & Pouillet's Law\\
+$\Phi_E = \iint_S \mathbf{E} \cdot d\mathbf{S}$ & Definition of Electric Flux \\
+$\lambda_q = \frac{d q}{d \ell}\,, \sigma_q = \frac{d q}{d S}\,, \rho_q =\frac{d q}{d \volume}$ & Density charges \\
+$  \boldsymbol{D} = \varepsilon_0  \boldsymbol{E} +  \boldsymbol{P} $ & Electric displacement field \\
+\end{tabular}
+
+\subsection{From Coulomb to Poisson}
+From Coulomb's law and the definition of Electric field
+\[ \mathbf{E} = \frac{q}{4\pi\varepsilon_0 r^2}  \] 
+And we get Gauss Law
+\[ \Phi_E = \oiint_S \frac{q}{4\pi\varepsilon_0 r^2} \cdot \mathrm{d}\mathbf{S} = \frac{q}{\varepsilon_0}\]
+And Using the Divergence Theorem (in/out = change inside), we can get the differential form of Gauss Law
+\[ \iiint_V\left(\mathbf{\nabla}\cdot\mathbf{E}\right)\,dV=\oiint_S(\mathbf{E}\cdot\mathbf{n})\,dS .\]
+\[\nabla \cdot \mathbf{E} = \frac{\rho_q}{\varepsilon_0}\]
+An finally with $\mathbf{E} = -\nabla \cdot V$, we get Poisson's equation
+ \[ {\nabla}^2 V = -\frac{\rho_q}{\varepsilon_0} \]
+
+
+Continuity equation apply to charge density :
+\[  \nabla \cdot \mathbf{J} = - \frac{\partial \rho_q}{ \partial t}  \]
+And with $I = \frac{dq}{dt}$, $\mathbf{J} = \sigma \mathbf{E}$ and with linear charge density  $\rho_q =\frac{d q}{d V}$:
+\[ \nabla \cdot (\sigma \mathbf{E}) = -\frac{\partial}{\partial t} \left(  \frac{dq}{d\volume}\right)\]
+With a constant (over time) point charge $q$ at the origine $\rho_q(r) = q\delta(r)$
+\[ \nabla \cdot (\sigma \nabla V) =-I \delta (r) \]
+
+
+\section{Electromagnetism}
+\subsection{Basic definition}
+\begin{tabular}{@{}ll@{}}
+$\mathbf{B} = \frac{\mu_0I}{4\pi}\int\frac{d\boldsymbol{\ell} \times \mathbf{\hat r}}{r^2}$ 	& Magnetic Field ( Biot-Savart law)\\
+$\mathbf{F} = q \mathbf{v} \times \mathbf{B}$ 												& Lorentz force \\
+$\mathbf{v}$ 																				& Particle's velocity \\
+$\mu_0$																						& Magnetic constant\\
+$\Phi_B = \iint\limits \mathbf{B} \cdot d \mathbf{S}$ 										& Magnetic flux\\
+$\mathcal{E} = -{{d\Phi_\mathrm{B}} \over dt}$ 												& Electromotive force (EMF) (Faraday Law)\\
+$\nabla \times \mathbf{E} = -\frac{\partial \mathbf{B}} {\partial t}$  						& Maxwell-Faraday equation \\
+\end{tabular}
+
+\subsection{Ampere law}
+Ampere's law relates magnetic fields to electric currents that produce them:
+\[ \oint_C \mathbf{B} \cdot \mathrm{d}\boldsymbol{\ell} = \mu_0 \iint_S \mathbf{J} \cdot \mathrm{d}\mathbf{S} = \mu_0I_\mathrm{enc}    \quad \text{or} \quad  \mathbf{\nabla} \times \mathbf{B} = \mu_0 \mathbf{J} \]
+
+Current in a material is affected by magnetization (electrons remain bound to their respective atoms, but behave as if they were orbiting the nucleus in a particular direction, creating a microscopic current) and polarization (positive and negative bound charges can separate over atomic distances).
+\[\mathbf{J} =\mathbf{J}_{\text{f}} + \mathbf{J}_{\text{M}} + \mathbf{J}_{\text{P}} \]
+
+In order to take this effect to account and only count for the free current, the H magnetic field is introduced $\mathbf{H}\  \equiv \ \frac{\mathbf{B}}{\mu_0}-\mathbf{M}$ with ($M$: magnetization). And Ampere Law become :
+\[\oint_C \mathbf{H} \cdot \mathrm{d}\boldsymbol{\ell} = \iint_S \mathbf{J}_\mathrm{f}\cdot \mathrm{d}\mathbf{S} = I_{\mathrm{f,enc}}     \quad  \text{or} \quad\mathbf{\nabla} \times \mathbf{H} = \mathbf{J}_{\text{f}} \]
+
+\subsection{Issue with Ampere law and derivation of Maxwell–Ampère equation}
+In vector calculus, $\nabla\cdot(\nabla\times\bold{B}) = 0 $ therefore according Ampere law $\nabla\cdot \bold{J} = 0$. But in genearale $\nabla\cdot \bold{J} = -\frac{\partial \rho}{\partial t} $. The Displacement current ($J_\mathbf{D}=\frac{\partial \mathbf{D}}{ \partial t}$) was added by Maxwell :
+\[ \oint_C \mathbf{H} \cdot \mathrm{d}\boldsymbol{\ell} =  \iint_S \left( \mathbf{J}_{\mathrm{f}} + \frac{\partial }{\partial t}\mathbf{D} \right) \cdot \mathrm{d} \mathbf{S}    \quad \text{or} \quad \mathbf{\nabla} \times \mathbf{H} = \mathbf{J}_{\mathrm{f}}+\frac{\partial }{\partial t}\mathbf{D} \]
+\[\mathbf{\nabla}\times \mathbf{B} = \left(\mu_0\mathbf{J}+\mu_0 \epsilon_0 \frac{\partial }{\partial t}\mathbf{E}\right) \]
+
+\subsection{hello}
+CSEM main equation result by combining Ampere-Maxwell, Ohm and Faraday laws into the damped wave equation
+\[ \nabla ^2 \mathbf{B}  - \mu_0 \sigma \frac{\partial \mathbf{B}}{\partial t} - \mu_0 \epsilon \frac{\partial^2 \mathbf{B}}{\partial t^2}  = \mu_0 \nabla \times \mathbf{J}_S\] 
+where
+
+
+
+
+
+
+
+\section{Seismology}
+\begin{tabular}{@{}ll@{}}
+$A$ & Amplitude\\
+$\lambda = 1/k$ & Wavelength (1/wave nb) (distence)\\
+$T=1/f$ & Period (1/freq.)(time)\\
+$V=f\lambda=1/Tk$&Propagation speed \\
+$\frac{ \partial^2 u }{ \partial x^2 } = \frac{1}{V^2} \frac{ \partial^2 u }{ \partial  t^2 }$ & Wave equation\\
+$V_p=\sqrt{\frac{K+4/3}{\rho}}$&P-wave velocity\\
+$V_s=\sqrt{\frac{\mu}{\rho}}$&S-wave velocity\\
+$K=\rho \frac{\mathrm d P}{\mathrm d \rho}$ & bulk modulus\\
+$\rho$& density\\
+$E$ & Module d'elasticity\\
+$ \sigma = E \varepsilon$  & Module de traction \\
+$\mu = G_s \ \varepsilon$ & Shear modulus\\
+$ \nu = \frac{(l_0-l)/l_0}{(L-L_0)/L_0}$ & Coefficient poisson\\
+$\mu = \frac {E}{2(1+\nu)}.$ &\\
+
+\end{tabular}
+
+
+
+
+
+
+
+
+\section{Geostat}
+\subsection{Basic Definition}
+\begin{tabular}{@{}ll@{}}
+$ \Pr [ X \le x] = F_X(x) = \int_{-\infty}^x f_X(u) \, du $ & Prob. and cum. density function\\
+$\operatorname{E}[X] = \int_{-\infty}^\infty x\,f(x)\,dx.$ & Expected value\\
+$  \operatorname{Var}(X) = \operatorname{E}\left[(X - \mu)^2 \right] $ &Variance \\
+$\operatorname{Cov}(X,Y) = \operatorname{E}{\big[(X - \operatorname{E}[X])(Y - \operatorname{E}[Y])\big]}$ & Covariance\\
+$2\gamma(h)=\text{var}[Z(x) - Z(x+h)] $& Variogramme\\
+$C(h)=\operatorname{cov}(Z(x),Z(x+h)).\,$ & Covariogramme\\
+$C(0)=C(h)-\gamma(h)$ & Variance \\
+\end{tabular}
+
+
+
+\end{document}

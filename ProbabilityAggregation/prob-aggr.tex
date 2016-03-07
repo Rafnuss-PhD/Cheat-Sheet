@@ -1,0 +1,181 @@
+\documentclass[twocolumn]{article}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{amsfonts}
+\usepackage{color,overpic}
+\usepackage{hyperref}
+\usepackage{array} 
+\usepackage{amstext}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{natbib}
+\usepackage{framed}
+\usepackage{float}
+%\usepackage[]{algorithm2e}
+\usepackage{algorithmicx}
+\usepackage{tabto}
+\usepackage{esint}
+\usepackage{empheq}
+\usepackage{breqn}
+
+\newenvironment{Figure}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+  
+\numberwithin{equation}{section}
+
+\NumTabs{10}
+
+% Turn off header and footer
+\pagestyle{empty}
+\setlist[itemize]{leftmargin=*} % set itemise indentation to leftmargin
+\setlist[enumerate]{leftmargin=*}
+
+\setlist[itemize]{itemsep=0mm}
+\setlist[enumerate]{itemsep=0mm}
+
+\title{Probability Aggregation}
+\date{\vspace{-6ex}}
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+\maketitle
+
+
+\section{Basic Concept and Definition}
+Be an event $A$ associated with a certain probability $P(A)$ to occurs.
+
+	\subsection{Conditional Probability}
+The conditional probability of A given B (i.e.: knowing that B occurred) is given by 
+$$P(A \mid B)= \frac{P(A \cap B)}{P(B)}$$
+
+	\subsection{Bayes Theorem}
+Bayes Theorem can be derive from the conditional probability 
+$$P(A \mid B) = \frac{P(B \mid  A)\, P(A)}{P(B)} $$
+
+	\subsection{Joint Probability}
+The joint probability distribution for $A,B,\ldots$ is a probability distribution that gives the probability that each of $A,B,\ldots$ falls in any particular range of values specified for that variable.
+$$P(A,B)=P(A \mid B) P(B)=P(B \mid A) P(A)$$
+
+The sequential simulation algorithm is based on this equation:
+$$P(X_1,\ldots,X_n) = \prod_{i=1}^n  P(X_i \mid X_1, \ldots X_{i-1}) $$
+
+	\subsection{Kullback-Leibler (KL) divergence}
+KL divergence is a non-symmetric measure of the information lost when $P_G$ is used to approximate $P$:
+$$D_{\mathrm{KL}}(P\|P_G) = \int_{-\infty}^\infty P(A) \, \log\frac{P(A)}{P_G(A)} \, {\rm d}A =\sum_A P(A) \, \log\frac{P(A)}{P_G(A)}$$
+It can be view as the expectation of the logarithmic difference between the probabilities.
+
+\section{Aggregation}
+Aggregation targets to combine difference knowledge $D_i$ related to a single event $A$ :
+\begin{framed}
+\begin{align*} 
+P(A \mid D_1,\ldots,D_n)	&= P_G\left(P(A \mid D_1), \ldots, P(A \mid D_n)\right)\\ 
+						&= P_G\left(P_1, \ldots, P_n \right)
+\end{align*}
+\end{framed}
+\section{Properties}
+\begin{itemize}
+	\item \textbf{Dictatorship.} If the method has a probability $P_i$ which overtake the others :
+$$P_G(P_1,...,P_i,...,P_n)(A)=P_i(A)$$
+	\item \textbf{Convexity.} If the method verify:
+$$P_G \in \left[\min\{P_1,...,P_n\},\, \max\{P_1,...,P_n\}\right] $$
+	\item \textbf{Unanimity.} If the method verify:
+$$ \forall P_i=p \Rightarrow P_G = p $$
+Convex method always preserve unanimity.
+	\item \textbf{Independence Preservation.} If the method verify:
+$$P_G(P_1,...,P_n)(A\cap B)=P_G(P_1,...,P_n)(A) \, P_G(P_1,...,P_n)(B)$$
+	\item \textbf{Marginalization.} If the method verify:
+$$P_G\{M_k(P_1),... ,M_k(P_n)\}=M_k\{P_G(P_1,...,P_n)\}$$ 
+where,
+$$M_k\{P(A)\}=P(A_k)$$
+
+	\item \textbf{External Bayesianity} If the method verify:
+$$ P_G(P^L_1 ,...,P^L_n)(A)=P^L_G(P_1,...,P_n)(A) $$
+where,
+$$P^L_i(A)=\frac{L(A)P_i(A)}{\sum_A L(A) P_i(A)}$$
+	\item \textbf{Certainty Effect} (or 0/1 forcing property).  If the method verify:
+$$\exists P_i | P_i(A)=0 \text{ or } P_i(A)=1 \Rightarrow P_G(A)=0 \text{ or } P_G(A)=1 $$
+\end{itemize}
+
+\section{Aggregation Methods}
+Combining the definition of the joint probability $P(A, D_1,\ldots,D_n)$ and $P(D_1,\ldots,D_n)$ we arrived to:
+\begin{align*} 
+P(A \mid D_1,\ldots,D_n)	&= \frac{P(A, D_1,\ldots,D_n)}{P(D_1,\ldots,D_n)} \\
+							&= \frac{P(A) \prod_{i=1}^n  P(D_i \mid A_1, D_1, \ldots D_{i-1}) }{P(D_1,\ldots,D_n)}
+\end{align*}
+
+	\subsection{Conditional independence}
+Two event are say conditionally independent if 
+$$P(X_1,\ldots,X_n \mid A) = \prod_i P(X_i \mid A)$$
+
+Assuming independence of $D_i$ conditionally to $A$  suppress the dependence of the author $D_1, \ldots D_{i-1}$:
+$$P(A \mid D_1,\ldots,D_n) = \frac{P(A) \prod_{i=1}^n  P(D_i \mid A) }{P(D_1,\ldots,D_n)}$$
+
+	\subsection{Full independence}
+If $D_i$ are assumed to be independent, we get:
+$$P(D_1,\ldots,D_n) = \prod_{i=1}^n P(D_i)$$
+
+Which bring to the aggregation method:
+$$P(A \mid D_1,\ldots,D_n)=P(A) \prod_{i=1}^n \frac{P(D_i \mid A)}{P(D_i)}$$
+
+	\subsection{Additive method}
+\begin{itemize}
+	\item \textbf{(Generalized) Linear Pooling.} 
+$$P_G(A) = \sum_{i=0}^nw_i P_i(A), \qquad \sum_i w_i=1$$
+Properties: sub-optimal, do not preserve independence, 0/1 forcing nor Bayesianity. convex method (preserve unanimity) and marginalization.
+
+$P_G$ result in a multi-modal distribution, each $P_i$ represent a different population. This is equivalent to first sample a population $P_i$ with weight $W_i$ and then sample inside this distribution the event $A$. No agreement between different source is stress.
+
+	\item \textbf{Beta-Transform Linear Pooling}
+$$P_G(A) = H_{\alpha,\beta}\left( \sum_{i=0}^n w_i P_i(A) \right)$$
+Again, $\sum_i w_i=1$, and $H_{\alpha,\beta}$ is the cumulative density function of a beta distribution:
+$$H_{\alpha,\beta}(x)= B(\alpha,\beta)^{-1} \int_0^x t^{\alpha-1}(1-t)^{\beta-1} dt $$
+where $x\in [0,1]$, $\alpha> 0$, $\beta> 0$  and $B(\alpha,\beta)=\int_0^1 t^{\alpha-1}(1-t)^{\beta-1} dt$
+
+The special case $\beta=\alpha=1$ simplify to the linear pooling. 
+
+Properties: loose marginalization, non-convex aggr. prob., can be show to be better than LP (why ?)
+\end{itemize}
+
+	\subsection{Multiplicative method}
+\begin{itemize}
+	\item \textbf{(Generalized) Log-linear Pooling.} 
+$$P_G(A) \propto P_0(A)^{1-S_w} \prod_{i=1}^n P_i(A)^{w_i}$$
+where $w_i$ is the weight associated to each $P_i$ and $S_w=\sum_i w_i$.
+Properties: verify Bayesianity, preserve unanimity and  0/1 forcing but do not preserve independence nor marginalization.
+
+If $w_i=1 \forall i \neq 0$, this corresponds to the \textit{conjunction of probabilities}.
+
+This is equivalent to a Bayesian notation of conditional propability:
+\begin{align*} 
+P(A \mid D_1,\ldots,D_n)	& \propto P_0(A) P(D_1,\ldots,D_n\mid A)\\ 
+						& \propto P_0(A)^{1-S_w} \prod_{i=1}^n P(A \mid D_i)^{w_{a,D_1,\ldots D_n}}\\ 
+\end{align*}
+Therefore, the decomposition is exact if there is one weight $w$ per combinaison ($A,D_i,\ldots D_n$). Log-linear pooling make the assumption that the weight is constant.
+
+The sum of weight $S_w$ plays an important role with regards to the prior influence: If $S_w=1$, $P_0$ is filtered out; if $S_w>1$, $P_G$ will be closer to $P_i$ than $P_0$
+
+
+	\item \textbf{Generalized Logarithmic Pooling}
+$$P_G(A) \propto H(A) \prod_{i=1}^n P(A \mid D_i)^{w_i}$$
+GLP allows $P_G$ to depend upon $A$ where again $\sum_i w_i=1$, and $H(A)$ is the an arbitrary bounded function playing the role of likelihood on the elements of A.
+\end{itemize}
+
+\begin{itemize}
+	\item Tau model
+	\item Bordley formula
+	\item Nu-model
+	\item ...
+\end{itemize}
+
+
+
+\bibliographystyle{apalike}
+\bibliography{citations}	
+	
+
+\end{document}
