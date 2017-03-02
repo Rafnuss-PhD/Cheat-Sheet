@@ -63,7 +63,7 @@ Machine learning has evolved from the study of pattern recognition and computati
 Based on the nature of the learning signal,
 \begin{itemize}
 	\item In \textbf{supervised learning}, the goal is to learn a general rule that maps inputs to outputs based on a training dataset (input and output). 
-	\item With \textbf{Unsupervised learning}, no labels are available and the goal is to find structure from input only.
+	\item With \textbf{unsupervised learning}, no labels are available and the goal is to find structure from input only.
 	\item \textbf{Reinforcement learning}, aims to take actions in an dynamic environment so as to maximize some notion of cumulative reward (such as driving a vehicle).
 \end{itemize}
  Among other small categories, \textbf{semi-supervised learning} is dealing with incomplete training dataset, \textbf{learning to learn} learns its own inductive bias based on previous experience and \textbf{developmental learning} generates its own sequences of learning situations to cumulatively acquire novel skills.
@@ -161,20 +161,8 @@ The goal is to create a model that predicts the value of a target variable based
 
 
 
-	\subsection{Artificial neural network (ANNs)}
-There is no single formal definition, however ANNS are capable of approximating a non-linear functions with a large number of inputs by mimicking biological neural networks.  Each nodes (neurons) consist of adaptive weights, parameters tuned by a learning algorithm. Mathematically, ANNs function $f(x)$ is defined as a composition of other functions $g_i(x)$, which can further be defined as a composition of other functions e.g. $h_i(x)$.
-$$\textstyle f (x) = K \left(\sum_i w_i g_i(x)\right) $$
-
-\begin{figure}[H]
-	\centering
-    $\vcenter{\hbox{\includegraphics[width=.25\textwidth]{300px-Colored_neural_network.png}}}$
-    $\vcenter{\hbox{\includegraphics[width=.2\textwidth]{178px-Ann_dependency_(graph).png}}}$
-\end{figure}	
-
-
-
 	\subsection{Support vector machines (SVMs)}
-A SVM is a non-probabilistic binary linear classifier which constructs a hyperplane able to se..
+A SVM is a supervised non-probabilistic binary linear classifier which constructs a hyperplane able to separate the two categories.
 
 Given some training data $\mathcal{D}$, a set of n points of the form
 $$\mathcal{D} = \left\{ (\mathbf{x}_i, y_i)\mid\mathbf{x}_i \in \mathbb{R}^p,\, y_i \in \{-1,1\}\right\}_{i=1}^n$$
@@ -186,8 +174,8 @@ Where $\mathbf{w}$ is the normal vector to the hyperplane and $\tfrac{b}{\|\math
 	\centering
 	\includegraphics[width=.2\textwidth]{Svm_max_sep_hyperplane_with_margin.png}
 \end{figure}
-
-We are looking at a function 
+Graphicaly, the solution is fully determined by the nearest points which are called \textit{support vectors}.
+Mathematically, we are looking at a function 
 $$f(\mathbf{x})=\mathbf{w}\cdot\mathbf{x} - b = \left\{
   \begin{array}{lr}
     \ge 1 	& \text{class 1}\\
@@ -196,17 +184,27 @@ $$f(\mathbf{x})=\mathbf{w}\cdot\mathbf{x} - b = \left\{
     else    & \text{margin}
   \end{array}
 \right.$$
-We can put this together to get the optimization problem:
+
+The maximum-margin is achived when $\|\mathbf{w}\|$ is minimized, the optimization problem becomes
 \begin{align*}
 &\underset{\mathbf{w},b}{\operatorname{minimize}}& & \frac{1}{2}\|\mathbf{w}\|^2 \\
 &\operatorname{subject\;to}
-& &y_i(\mathbf{w}\cdot\mathbf{x_i} - b) \ge 1 
+& &y_i(\mathbf{w}\cdot\mathbf{x}_i - b) \ge 1 
 \end{align*}
-And using Lagrange multiplier,
-$$\arg\min_{\mathbf{w},b } \max_{\boldsymbol{\alpha}\geq 0 } \left\{ \frac{1}{2}\|\mathbf{w}\|^2 - \sum_{i=1}^{n}{\alpha_i[y_i(\mathbf{w}\cdot \mathbf{x_i} - b)-1]} \right\}$$
 
- 
- 
+For not linearly separable data, the hinge loss function penalazied data $\mathbf{x}_i$ on the wrong side of the hyperplan with
+$$\max \left\{ 0,1-y_{i}( \mathbf{w}\cdot \mathbf{x}_i  -b) \right\}$$.
+
+The optimization problem become 
+\begin{align*}
+&\underset{\mathbf{w},b}{\operatorname{minimize}}& &  \frac{1}{n} \sum_i \max \left\{ 0,1-y_{i}( \mathbf{w}\cdot \mathbf{x}_i  -b) \right\}  + \frac{1}{2} \lambda \|\mathbf{w}\|^2, \\
+\end{align*}
+where the parameter $\lambda$ determines the tradeoff between increasing the margin-size and ensuring that the $\mathbf{x}_i$ lie on the correct side of the margin.
+
+A non-linear adaptation of SVM has been proposed by applying the kernel trick:  every dot product are replaced by a nonlinear kernel function.
+
+The classical approach to solve this problem is see it as a quadratic programming problem (Lagrange multiplier for linearly separable data or Augmented Lagrangian method else). More modern algorithm solves this problem with gradient problem: sub-gradient descent (if there are many training examples) or coordinate descent (if the dimension of the feature space is high).
+
  	\subsection{Relevance vector machine (RVM)}
 The RVM has an identical functional form to SVM, but provides probabilistic classification using Bayesian inference.
  	
@@ -240,6 +238,39 @@ The widely used Fuzzy C-Means Algorithm (Bezdek 1981) is an adaptation of the k-
  The fuzzifier $m$ determines the level of cluster fuzziness.
 $$w_{ij} = \frac{1}{\sum_{u=1}^{k} \left(\frac{\left\|\mathbf{x}_j - \mathbf{c}_i \right\|}{\left\|\mathbf{x}_j - \mathbf{c}_u \right\|}\right)^{\frac{2}{m-1}}} \qquad \mathbf{c}_i = {{\sum_j {w_{ij}} ^ {m} x_j} \over {\sum_j {w_{ij}} ^ {m}}}$$
 The algorithm converge by computing iteratly the weight and center.
+
+	\subsection{Artificial neural network (ANNs)}
+There is no single formal definition, however ANNS are capable of approximating a non-linear functions with a large number of inputs by mimicking biological neural networks.  Each nodes (neurons) consist of adaptive weights, parameters tuned by a learning algorithm. 
+\begin{figure}[H]
+	\centering
+    $\vcenter{\hbox{\includegraphics[width=.25\textwidth]{300px-Colored_neural_network.png}}}$
+    $\vcenter{\hbox{\includegraphics[width=.2\textwidth]{178px-Ann_dependency_(graph).png}}}$
+\end{figure}	
+
+		\subsubsection{Neurons Model}
+\begin{itemize}
+\item Linear neurons: output is a weighted some of the imput plus a bais 
+$$z(x) = \sum_i w_i x_i + b$$
+\item Binary threshold neurons: output is a step function for the weighted input exeeding a threshold $b$. 
+$$y(x) = 1 \text{ if } z(x)>b \text{ else }0$$
+\item Rectified Linear Neurons: combine a linear outpout with a threshold (low pass or high pass filter)
+\item Sigmoid neurons: real-value output of a smooth and bounded function (eg: logistic function). Their nice derivative make learning easy.
+$$ y(x) =\frac{1}{1+e^{-z}}$$
+\item Stochastic binary neurons
+Transform linear neurons or sigmoid neurons as a stocastic process:
+$$P(s=1)=y(x)$$ 
+\end{itemize}
+
+		\subsubsection{Neural Network Architecture}
+\begin{itemize}
+\item Feed-forward neural networks: organized by layers: input layer -> hidden layers -> output layer
+\item Recurrent neural networks: have cycles in their connection graph, difficult to train but much powerfull
+\item Symmetricall connected networks are recurrent network with weight equal in both direction. much easier to analyze. They are called Hopfield nets if no hidden unit are present and “Boltzmann machines” otherwise.
+\end{itemize}
+
+		\subsubsection{Perceptron}
+\textit{supervised learning, binary, linear classifiers}
+
 	\subsection{Bayesian networks}
 	\subsection{Genetic algorithms}
 	\subsection{Bootstrap}

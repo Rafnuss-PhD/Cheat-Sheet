@@ -23,10 +23,22 @@
 \begin{document}
 
 \begin{center}
-     \Large{Hydrogeologie} \\
+     \Large{Geophysic} \\
 \end{center}
 
-\section{Porosity}
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Pore-space properties: porosity and permeability}
+
+\subsection{Porosity}
 \begin{tabular}{@{}ll@{}}
 $ V_t=V_s+V_p$ & Total volume\\
 $ V_p=V_a+V_w$ & Pore volume\\
@@ -62,7 +74,7 @@ $m$ & masse\\
 
 
 
-\section{Hydraulic Conductivity}
+\subsection{Hydraulic Conductivity}
 Hydraulic conductivity has first be discover with the very famous Darcy's law which found a propotionallity bewteen the discharge and the head difference:
 $$Q=K\frac{\Delta P}{\Delta L}$$
 
@@ -97,7 +109,7 @@ $a$  & Tube factor shape. \\
 $F$ & Electrical formation factor\\
 \end{tabular}
 
-\section{Capillary Equations}
+\subsection{Capillary Equations}
 Young-Lapace Equation:
 \[ \Delta p = -\gamma \nabla \dot \hat{n}=2\gamma H\]
 Jurin's Law
@@ -110,7 +122,7 @@ $\theta$ & contact angle.\\
 $r$ & radius of the tube
 \end{tabular}
 
-\section{Soil moisture characteristic}
+\subsection{Soil moisture characteristic}
 Van Genuchten Equation (1980):
 \[ S_e = \frac{1}{\left[ 1 + \alpha \psi^n \right]^m}\]
 Mualem's Equation (1976)
@@ -124,6 +136,114 @@ $r$ & radius of the tube
 \end{tabular}
 
 
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Density}
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Electromagnetism}
+\subsection{Basic definition}
+\begin{tabular}{@{}ll@{}}
+$\mathbf{B} = \frac{\mu_0I}{4\pi}\int\frac{d\boldsymbol{\ell} \times \mathbf{\hat r}}{r^2}$ 	& Magnetic Field ( Biot-Savart law)\\
+$\mathbf{F} = q \mathbf{v} \times \mathbf{B}$ 												& Lorentz force \\
+$\mathbf{v}$ 																				& Particle's velocity \\
+$\mu_0$																						& Magnetic constant\\
+$\Phi_B = \iint\limits \mathbf{B} \cdot d \mathbf{S}$ 										& Magnetic flux\\
+$\mathcal{E} = -{{d\Phi_\mathrm{B}} \over dt}$ 												& Electromotive force (EMF) (Faraday Law)\\
+$\nabla \times \mathbf{E} = -\frac{\partial \mathbf{B}} {\partial t}$  						& Maxwell-Faraday equation \\
+\end{tabular}
+
+\subsection{Ampere law}
+Ampere's law relates magnetic fields to electric currents that produce them:
+\[ \oint_C \mathbf{B} \cdot \mathrm{d}\boldsymbol{\ell} = \mu_0 \iint_S \mathbf{J} \cdot \mathrm{d}\mathbf{S} = \mu_0I_\mathrm{enc}    \quad \text{or} \quad  \mathbf{\nabla} \times \mathbf{B} = \mu_0 \mathbf{J} \]
+
+Current in a material is affected by magnetization (electrons remain bound to their respective atoms, but behave as if they were orbiting the nucleus in a particular direction, creating a microscopic current) and polarization (positive and negative bound charges can separate over atomic distances).
+\[\mathbf{J} =\mathbf{J}_{\text{f}} + \mathbf{J}_{\text{M}} + \mathbf{J}_{\text{P}} \]
+
+In order to take this effect to account and only count for the free current, the H magnetic field is introduced $\mathbf{H}\  \equiv \ \frac{\mathbf{B}}{\mu_0}-\mathbf{M}$ with ($M$: magnetization). And Ampere Law become :
+\[\oint_C \mathbf{H} \cdot \mathrm{d}\boldsymbol{\ell} = \iint_S \mathbf{J}_\mathrm{f}\cdot \mathrm{d}\mathbf{S} = I_{\mathrm{f,enc}}     \quad  \text{or} \quad\mathbf{\nabla} \times \mathbf{H} = \mathbf{J}_{\text{f}} \]
+
+\subsection{Issue with Ampere law and derivation of Maxwell–Ampère equation}
+In vector calculus, $\nabla\cdot(\nabla\times\bold{B}) = 0 $ therefore according Ampere law $\nabla\cdot \bold{J} = 0$. But in genearale $\nabla\cdot \bold{J} = -\frac{\partial \rho}{\partial t} $. The Displacement current ($J_\mathbf{D}=\frac{\partial \mathbf{D}}{ \partial t}$) was added by Maxwell :
+\[ \oint_C \mathbf{H} \cdot \mathrm{d}\boldsymbol{\ell} =  \iint_S \left( \mathbf{J}_{\mathrm{f}} + \frac{\partial }{\partial t}\mathbf{D} \right) \cdot \mathrm{d} \mathbf{S}    \quad \text{or} \quad \mathbf{\nabla} \times \mathbf{H} = \mathbf{J}_{\mathrm{f}}+\frac{\partial }{\partial t}\mathbf{D} \]
+\[\mathbf{\nabla}\times \mathbf{B} = \left(\mu_0\mathbf{J}+\mu_0 \epsilon_0 \frac{\partial }{\partial t}\mathbf{E}\right) \]
+
+\subsection{hello}
+CSEM main equation result by combining Ampere-Maxwell, Ohm and Faraday laws into the damped wave equation
+\[ \nabla ^2 \mathbf{B}  - \mu_0 \sigma \frac{\partial \mathbf{B}}{\partial t} - \mu_0 \epsilon \frac{\partial^2 \mathbf{B}}{\partial t^2}  = \mu_0 \nabla \times \mathbf{J}_S\] 
+where
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Radioactivity}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Elastic properties}
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Seismology}
+\begin{tabular}{@{}ll@{}}
+$A$ & Amplitude\\
+$\lambda = 1/k$ & Wavelength (1/wave nb) (distence)\\
+$T=1/f$ & Period (1/freq.)(time)\\
+$V=f\lambda=1/Tk$&Propagation speed \\
+$\frac{ \partial^2 u }{ \partial x^2 } = \frac{1}{V^2} \frac{ \partial^2 u }{ \partial  t^2 }$ & Wave equation\\
+$V_p=\sqrt{\frac{K+4/3}{\rho}}$&P-wave velocity\\
+$V_s=\sqrt{\frac{\mu}{\rho}}$&S-wave velocity\\
+$K=\rho \frac{\mathrm d P}{\mathrm d \rho}$ & bulk modulus\\
+$\rho$& density\\
+$E$ & Module d'elasticity\\
+$ \sigma = E \varepsilon$  & Module de traction \\
+$\mu = G_s \ \varepsilon$ & Shear modulus\\
+$ \nu = \frac{(l_0-l)/l_0}{(L-L_0)/L_0}$ & Coefficient poisson\\
+$\mu = \frac {E}{2(1+\nu)}.$ &\\
+
+\end{tabular}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Thermal Properties}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Electrical Properties}
 
 \subsection{General definition}
@@ -244,81 +364,9 @@ With a constant (over time) point charge $q$ at the origine $\rho_q(r) = q\delta
 \[ \nabla \cdot (\sigma \nabla V) =-I \delta (r) \]
 
 
-\section{Electromagnetism}
-\subsection{Basic definition}
-\begin{tabular}{@{}ll@{}}
-$\mathbf{B} = \frac{\mu_0I}{4\pi}\int\frac{d\boldsymbol{\ell} \times \mathbf{\hat r}}{r^2}$ 	& Magnetic Field ( Biot-Savart law)\\
-$\mathbf{F} = q \mathbf{v} \times \mathbf{B}$ 												& Lorentz force \\
-$\mathbf{v}$ 																				& Particle's velocity \\
-$\mu_0$																						& Magnetic constant\\
-$\Phi_B = \iint\limits \mathbf{B} \cdot d \mathbf{S}$ 										& Magnetic flux\\
-$\mathcal{E} = -{{d\Phi_\mathrm{B}} \over dt}$ 												& Electromotive force (EMF) (Faraday Law)\\
-$\nabla \times \mathbf{E} = -\frac{\partial \mathbf{B}} {\partial t}$  						& Maxwell-Faraday equation \\
-\end{tabular}
-
-\subsection{Ampere law}
-Ampere's law relates magnetic fields to electric currents that produce them:
-\[ \oint_C \mathbf{B} \cdot \mathrm{d}\boldsymbol{\ell} = \mu_0 \iint_S \mathbf{J} \cdot \mathrm{d}\mathbf{S} = \mu_0I_\mathrm{enc}    \quad \text{or} \quad  \mathbf{\nabla} \times \mathbf{B} = \mu_0 \mathbf{J} \]
-
-Current in a material is affected by magnetization (electrons remain bound to their respective atoms, but behave as if they were orbiting the nucleus in a particular direction, creating a microscopic current) and polarization (positive and negative bound charges can separate over atomic distances).
-\[\mathbf{J} =\mathbf{J}_{\text{f}} + \mathbf{J}_{\text{M}} + \mathbf{J}_{\text{P}} \]
-
-In order to take this effect to account and only count for the free current, the H magnetic field is introduced $\mathbf{H}\  \equiv \ \frac{\mathbf{B}}{\mu_0}-\mathbf{M}$ with ($M$: magnetization). And Ampere Law become :
-\[\oint_C \mathbf{H} \cdot \mathrm{d}\boldsymbol{\ell} = \iint_S \mathbf{J}_\mathrm{f}\cdot \mathrm{d}\mathbf{S} = I_{\mathrm{f,enc}}     \quad  \text{or} \quad\mathbf{\nabla} \times \mathbf{H} = \mathbf{J}_{\text{f}} \]
-
-\subsection{Issue with Ampere law and derivation of Maxwell–Ampère equation}
-In vector calculus, $\nabla\cdot(\nabla\times\bold{B}) = 0 $ therefore according Ampere law $\nabla\cdot \bold{J} = 0$. But in genearale $\nabla\cdot \bold{J} = -\frac{\partial \rho}{\partial t} $. The Displacement current ($J_\mathbf{D}=\frac{\partial \mathbf{D}}{ \partial t}$) was added by Maxwell :
-\[ \oint_C \mathbf{H} \cdot \mathrm{d}\boldsymbol{\ell} =  \iint_S \left( \mathbf{J}_{\mathrm{f}} + \frac{\partial }{\partial t}\mathbf{D} \right) \cdot \mathrm{d} \mathbf{S}    \quad \text{or} \quad \mathbf{\nabla} \times \mathbf{H} = \mathbf{J}_{\mathrm{f}}+\frac{\partial }{\partial t}\mathbf{D} \]
-\[\mathbf{\nabla}\times \mathbf{B} = \left(\mu_0\mathbf{J}+\mu_0 \epsilon_0 \frac{\partial }{\partial t}\mathbf{E}\right) \]
-
-\subsection{hello}
-CSEM main equation result by combining Ampere-Maxwell, Ohm and Faraday laws into the damped wave equation
-\[ \nabla ^2 \mathbf{B}  - \mu_0 \sigma \frac{\partial \mathbf{B}}{\partial t} - \mu_0 \epsilon \frac{\partial^2 \mathbf{B}}{\partial t^2}  = \mu_0 \nabla \times \mathbf{J}_S\] 
-where
 
 
 
-
-
-
-
-\section{Seismology}
-\begin{tabular}{@{}ll@{}}
-$A$ & Amplitude\\
-$\lambda = 1/k$ & Wavelength (1/wave nb) (distence)\\
-$T=1/f$ & Period (1/freq.)(time)\\
-$V=f\lambda=1/Tk$&Propagation speed \\
-$\frac{ \partial^2 u }{ \partial x^2 } = \frac{1}{V^2} \frac{ \partial^2 u }{ \partial  t^2 }$ & Wave equation\\
-$V_p=\sqrt{\frac{K+4/3}{\rho}}$&P-wave velocity\\
-$V_s=\sqrt{\frac{\mu}{\rho}}$&S-wave velocity\\
-$K=\rho \frac{\mathrm d P}{\mathrm d \rho}$ & bulk modulus\\
-$\rho$& density\\
-$E$ & Module d'elasticity\\
-$ \sigma = E \varepsilon$  & Module de traction \\
-$\mu = G_s \ \varepsilon$ & Shear modulus\\
-$ \nu = \frac{(l_0-l)/l_0}{(L-L_0)/L_0}$ & Coefficient poisson\\
-$\mu = \frac {E}{2(1+\nu)}.$ &\\
-
-\end{tabular}
-
-
-
-
-
-
-
-
-\section{Geostat}
-\subsection{Basic Definition}
-\begin{tabular}{@{}ll@{}}
-$ \Pr [ X \le x] = F_X(x) = \int_{-\infty}^x f_X(u) \, du $ & Prob. and cum. density function\\
-$\operatorname{E}[X] = \int_{-\infty}^\infty x\,f(x)\,dx.$ & Expected value\\
-$  \operatorname{Var}(X) = \operatorname{E}\left[(X - \mu)^2 \right] $ &Variance \\
-$\operatorname{Cov}(X,Y) = \operatorname{E}{\big[(X - \operatorname{E}[X])(Y - \operatorname{E}[Y])\big]}$ & Covariance\\
-$2\gamma(h)=\text{var}[Z(x) - Z(x+h)] $& Variogramme\\
-$C(h)=\operatorname{cov}(Z(x),Z(x+h)).\,$ & Covariogramme\\
-$C(0)=C(h)-\gamma(h)$ & Variance \\
-\end{tabular}
 
 
 

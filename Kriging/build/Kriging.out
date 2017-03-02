@@ -1,0 +1,31 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Objetif}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Other technique}{section.1}% 3
+\BOOKMARK [3][-]{subsubsection.1.2.1}{Linear Estimation}{subsection.1.2}% 4
+\BOOKMARK [2][-]{subsection.1.3}{History and Developement}{section.1}% 5
+\BOOKMARK [2][-]{subsection.1.4}{Variogramm}{section.1}% 6
+\BOOKMARK [1][-]{section.2}{Kriging Basic Description}{}% 7
+\BOOKMARK [2][-]{subsection.2.1}{General Definition}{section.2}% 8
+\BOOKMARK [2][-]{subsection.2.2}{MVUE}{section.2}% 9
+\BOOKMARK [1][-]{section.3}{Method}{}% 10
+\BOOKMARK [2][-]{subsection.3.1}{Simple Kriging}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.2}{Ordinary Kriging}{section.3}% 12
+\BOOKMARK [2][-]{subsection.3.3}{Additivity Theorem}{section.3}% 13
+\BOOKMARK [2][-]{subsection.3.4}{Kriging with a Trend \(Universal Kriging\)}{section.3}% 14
+\BOOKMARK [2][-]{subsection.3.5}{Block Kriging}{section.3}% 15
+\BOOKMARK [2][-]{subsection.3.6}{Dual Kriging}{section.3}% 16
+\BOOKMARK [2][-]{subsection.3.7}{Filtering}{section.3}% 17
+\BOOKMARK [2][-]{subsection.3.8}{Non-linear Kriging}{section.3}% 18
+\BOOKMARK [2][-]{subsection.3.9}{Indicator Kriging}{section.3}% 19
+\BOOKMARK [1][-]{section.4}{Multivariate Kriging}{}% 20
+\BOOKMARK [2][-]{subsection.4.1}{Cokriging}{section.4}% 21
+\BOOKMARK [2][-]{subsection.4.2}{Kriging with external Drift}{section.4}% 22
+\BOOKMARK [2][-]{subsection.4.3}{Collocated cokriging}{section.4}% 23
+\BOOKMARK [2][-]{subsection.4.4}{Cosimulation}{section.4}% 24
+\BOOKMARK [2][-]{subsection.4.5}{...}{section.4}% 25
+\BOOKMARK [1][-]{section.5}{Neighborhood and Search Strategie}{}% 26
+\BOOKMARK [2][-]{subsection.5.1}{Limiting the neighborhood}{section.5}% 27
+\BOOKMARK [2][-]{subsection.5.2}{Screening Effect}{section.5}% 28
+\BOOKMARK [2][-]{subsection.5.3}{Search Strategies}{section.5}% 29
+\BOOKMARK [1][-]{section.6}{Limitation}{}% 30
+\BOOKMARK [1][-]{section.7}{To go futher}{}% 31

@@ -58,12 +58,25 @@ Consider the probleme of estimating the value of a continuous attribute at an un
 - minimum error variance (MVUE)
 - low-pass filter ?
 pb: smooth out detail
+Find $Z^*(\boldsymbol{u}_0)$ knowing other $\left\{ Z(\boldsymbol{u}_\alpha) \mid \alpha =1,\ldots,n \right\}$.
 
 
 \subsection{Other technique}
 This problem is generalized under the interpolation theory. The classical approach is to postulate a parametric function to fit. Exemple of that include:
+
+\subsubsection{Linear Estimation}
+Linear Estimator technique take the general form
+\begin{equation}
+Z^*_0 = \sum_\alpha w_\alpha Z_\alpha
+\end{equation}
 \begin{itemize}
 \item Nearest-neighbor interpolation: Take the value of the nearest data.
+$$w_i = 1 \quad \text{if } \|\boldsymbol{u}_i - \boldsymbol{u}_0\| \le \|\boldsymbol{u}_\alpha - \boldsymbol{u}_0\| $$
+\item Moving-Average: same weight for all.
+$$w_i = 1/n$$
+\item Inverse Distance: proportional to the inverse of the distance.
+$$w_i = \frac{1/(\|\boldsymbol{u}_i - \boldsymbol{u}_0\|)}{\sum_\alpha 1/(\|\boldsymbol{u}_\alpha - \boldsymbol{u}_0\|)}$$
+It is also possible to put a power on the distance to enhance the close point.
 \item 1D Linear interpolation: Assume a constant slope betwen each known data. Therefore, for a point $x$, between $x_a$ and $x_b$, its value $y$ is:
 $$ y = y_a + \left( y_b-y_a \right) \frac{x-x_a}{x_b-x_a} \text{ at the point } \left( x,y \right) $$
 \item Highest dimension linear interpolation. The extension of the linear interpolation is highest dimension does not create a linear function. Rather, these interpolation are a successive 1D interpolation. For instance, in the following figure, $P$ is estimate by first linear interpolation of $R_1$ and $R_2$ in the y-direction and then interpolation $P$, between $R_1$ and $R_2$.
@@ -140,15 +153,14 @@ The minimum-variance unbiased estimator (MVUE) is the estimator which is accurat
 \begin{itemize}
 	\item Unbiasedness: $\operatorname{B}( \theta^*) = \operatorname{E}[\theta^*]-\theta= \operatorname{E}[\theta^*-\theta]=0$. The bias is the difference between this estimator's($\theta^*$) expected value and the true value of the parameter ($\theta$) being estimated. 
 	\begin{align*}
-		\operatorname{B}(Z^*_0)	&= \operatorname{E}[Z_0] - \operatorname{E}[Z^*_0]\\
-		  						&= \sum_{\alpha=1}^{n_0} \lambda_\alpha \operatorname{E}\left[Z_\alpha \right] + \left( 1- \sum_{\alpha=1}^{n_0} \lambda_\alpha\right) m_0 - \operatorname{E}[Z^*_0]\\
-		 						&= \sum_{\alpha=1}^{n_0} \lambda_\alpha m_0 +m_0 - \sum_{\alpha=1}^{n_0} \lambda_\alpha m_0  -m_0\\
+		\operatorname{B}(Z^*_0)	&= \operatorname{E}\left[Z_0 - Z^*_0\right]\\
+		  						&= \operatorname{E}\left[Z_0 - \sum_{\alpha=1}^{n_0} \lambda_\alpha Z_\alpha  - \left( 1- \sum_{\alpha=1}^{n_0} \lambda_\alpha\right)m_0 \right]\\		  																				&= m_0 - \sum_{\alpha=1}^{n_0} \lambda_\alpha m_0 - \left( 1- \sum_{\alpha=1}^{n_0} \lambda_\alpha\right)m_0 \\
 		 						&= 0
 	\end{align*}
 	Bias is always achieved for all method.
-	\item Lowest variance: ${\sigma^2_E}^*=\operatorname{var}\{\theta^*-\theta\}$. Minimizing this variance try to not only be accurate but also precise. We can rewritten the equation using notation of equation~\ref{eq:krig2}:
+	\item Lowest variance: $\sigma^2_E=\operatorname{var}\{\theta^*-\theta\}$. Minimizing this variance try to not only be accurate but also precise. We can rewritten the equation using notation of equation~\ref{eq:krig2}:
 	\begin{align} \label{eq:variance}
-		{\sigma^2_E}^* 	&= \operatorname{var} \left\{ Z_0-Z^*_0 \right\} \nonumber\\
+		\sigma^2_E 	&= \operatorname{var} \left\{ Z_0-Z^*_0 \right\} \nonumber\\
 						&= \operatorname{var} \left\{ (Z_0-m_0) - (Z^*_0-m_0) \right\} \nonumber\\
 						&= \operatorname{var} \left\{ \tilde{Z_0}-\tilde{Z^*_0} \right\} \nonumber \\
 						&= \operatorname{var} \left\{ \tilde{Z_0}-\tilde{Z^*_0} \right\} \nonumber \\
@@ -166,9 +178,9 @@ The minimum-variance unbiased estimator (MVUE) is the estimator which is accurat
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Method}
 \subsection{Simple Kriging}
-Simple Kriging (SP) assume location-independent mean $m_0 =m$ (first order stationarity) which mean that the mean is the same throughout the study area (an not only around the simulated point). The mean can be estimated with all known point ($m=\sum Z_i$) and $\lambda_\alpha$ is the only unknown left. This can be find by minimizing ${\sigma^2_E}^*$ which is found when his derivative is equal to 0 for each $\lambda_\alpha$ :
+Simple Kriging (SP) assume location-independent mean $m_0 =m$ (first order stationarity) which mean that the mean is the same throughout the study area (an not only around the simulated point). The mean can be estimated with all known point ($m=\sum Z_i$) and $\lambda_\alpha$ is the only unknown left. This can be find by minimizing $\sigma^2_E$ which is found when his derivative is equal to 0 for each $\lambda_\alpha$ :
 \begin{equation}
-	\frac{\partial {\sigma^2_E}^*}{\partial \lambda_\alpha } = 0=2 \sum_{\beta=1}^n \lambda_\beta \operatorname{C}\left\{\tilde{Z_\alpha},\tilde{Z_\beta}\right\}
+	\frac{\partial \sigma^2_E}{\partial \lambda_\alpha } = 0=2 \sum_{\beta=1}^n \lambda_\beta \operatorname{C}\left\{\tilde{Z_\alpha},\tilde{Z_\beta}\right\}
 	-2 \operatorname{C}\left\{\tilde{Z_0}, \tilde{Z_\alpha}\right\}
 \end{equation}
 Which can be rewritten:
@@ -208,7 +220,7 @@ The $\lambda$ can be found with $\boldsymbol{\Lambda} = \boldsymbol{C_{\alpha,\b
 
 We can put back the minimized solution (equation~\ref{eq:minimvar}) into the variance equation~\ref{eq:variance} :
 \begin{equation}
-	{\sigma^2_E}^*  = \operatorname{var}\left\{Z_0\right\} - \sum_{\alpha=1}^n \lambda_\alpha \operatorname{C}\left\{Z_0, Z_\alpha\right\}
+	\sigma^2_E  = \operatorname{var}\left\{Z_0\right\} - \sum_{\alpha=1}^n \lambda_\alpha \operatorname{C}\left\{Z_0, Z_\alpha\right\}
 \end{equation}
 The error variance in the estimation is equal to the variance of the data $\operatorname{var}\left\{Z_0\right\}$ reduced by the information brought by  point in the neighbourhood of $\boldsymbol{u_0}$. Note that we used the covariance, but variogram could be interchangeably used 
 
@@ -219,11 +231,11 @@ Ordinary Kriging doesn't assume first-order stationary ($m_0$ is unknown). In th
 \begin{equation} \label{eq:cond}
 	\sum_{\alpha=1}^{n_0} \lambda_\alpha=1
 \end{equation}
-This times, minimizing the variance ${\sigma^2_E}^*$ is more trick as it is subject to equation~\ref{eq:cond}. Solution is find using the method of the Lagrangian multiplier. It is a strategy for finding the local minima $\boldsymbol{u_0}$ of a function $f(\boldsymbol{u})$ subject to equality constraints $g(\boldsymbol{u})=0$. The Lagrangian function is define as: $ F(\boldsymbol{u},2\mu) = f(\boldsymbol{u}) + 2\mu g(\boldsymbol{u})$. This idea behind this method is that if $\boldsymbol{u_0}$ is a minimum point, then there is a point $\mu_0$ such that $(\boldsymbol{u_0}, \mu_0)$ is a stationary point for the lagrangian function. Stationary point are points where all partial derivatives of F are zero $ \nabla_{\boldsymbol{u},\mu} F(\boldsymbol{u_0}, \mu_0)=0 $
+This times, minimizing the variance $\sigma^2_E$ is more trick as it is subject to equation~\ref{eq:cond}. Solution is find using the method of the Lagrangian multiplier. It is a strategy for finding the local minima $\boldsymbol{u_0}$ of a function $f(\boldsymbol{u})$ subject to equality constraints $g(\boldsymbol{u})=0$. The Lagrangian function is define as: $ F(\boldsymbol{u},2\mu) = f(\boldsymbol{u}) + 2\mu g(\boldsymbol{u})$. This idea behind this method is that if $\boldsymbol{u_0}$ is a minimum point, then there is a point $\mu_0$ such that $(\boldsymbol{u_0}, \mu_0)$ is a stationary point for the lagrangian function. Stationary point are points where all partial derivatives of F are zero $ \nabla_{\boldsymbol{u},\mu} F(\boldsymbol{u_0}, \mu_0)=0 $
 
 In our case the Lagrangian function is:
 \begin{equation}
-	F(\lambda_\alpha, 2\mu) = {\sigma^2_E}^* + 2\mu \left( \sum_{\alpha=1}^{n_0} \lambda_\alpha - 1\right)
+	F(\lambda_\alpha, 2\mu) = \sigma^2_E + 2\mu \left( \sum_{\alpha=1}^{n_0} \lambda_\alpha - 1\right)
 \end{equation}
 Leading up to finding the stationary point
 \begin{equation} \label{eq:stationnary_pt}
@@ -266,18 +278,54 @@ Once the $\lambda$ have been found, equation~\ref{eq:krig3} can be simplified an
 
 In a similar matter, variance of the computed value can be found with
 \begin{equation}
-	{\sigma^2_E}^*  = \operatorname{var}\left\{Z_0\right\} - \sum_{\alpha=1}^n \lambda_\alpha \operatorname{C}\left\{Z_0, Z_\alpha\right\} -\mu
+	\sigma^2_E  = \operatorname{var}\left\{Z_0\right\} - \sum_{\alpha=1}^n \lambda_\alpha \operatorname{C}\left\{Z_0, Z_\alpha\right\} -\mu
 \end{equation}
 
+\subsection{Additivity Theorem}
+The additvity theorem relates the simple and ordinary kriging by the kriging of the mean. The kriging estimate of the mean can be written as
+\begin{equation}
+	m^* = \sum_\alpha \lambda_\alpha Z_\alpha,
+\end{equation}
+and lead to the kriging system with $\operatorname{C}\left\{m,Z_\alpha\right\}=0$
+\[
+	\begin{bmatrix}
+    	\operatorname{C}\left\{Z_1,Z_1\right\} 	& \cdots 	& \operatorname{C}\left\{Z_1,Z_n\right\} & 1  		\\
+    	\vdots 									& 			& 										& \vdots 	\\
+       		\operatorname{C}\left\{Z_1,Z_n\right\}  	& \cdots 	& \operatorname{C}\left\{Z_n,Z_n\right\}	& 1			\\
+       		1										& \cdots	 	& 1										& 0
+     	\end{bmatrix}
+     	\begin{pmatrix}
+       		\lambda_1 	\\
+       		\vdots 		\\
+       		\lambda_n	\\
+       		\mu  
+     	\end{pmatrix}
+     	=
+     	\begin{bmatrix}
+       		0 	\\
+       		\vdots 									\\
+       		0 	\\
+       		1
+     	\end{bmatrix}.
+\] 
+The estimate mean variance 
+\begin{equation}
+	\sigma_E^2 = \operatorname{var}\left\{ m^* \right\} = -\mu
+\end{equation}
 
-
-
-\subsection{Kriging with a Trend}
+It can be demonstrate that 
+\begin{equation}
+	[Z_0^*]^{OK} = [Z_0^*]^{SK} + \lambda_m(m^*-m)
+\end{equation}
+\begin{equation}
+	\sigma_E^{OK} = \sigma_E^{SK} + \lambda_m^2(m^*)
+\end{equation}
+\subsection{Kriging with a Trend (Universal Kriging)}
 The assumption made in the general description that the mean is constant in the search neighbour $m(\boldsymbol{u_0}) = m(\boldsymbol{u_\alpha}) ,\alpha \in W(\boldsymbol{u_0})$ might not hold in the presence of a trend. In the Universal Kriging (with a trend), the local mean in a search neighboor is modelled with a smoothly varying function:
 \[ m(\boldsymbol{u_\alpha})=\sum_{k=0}^K{a_k f_k(\boldsymbol{u_\alpha})}\]
 Where $f_k$ are known function while the coefficient $a_k$ are unknown. Note that if k=0, we end up with Ordinary Kriging. Equation~\ref{eq:krig3} became:
 \begin{equation}
-	Z_0^* =  \sum_{\alpha=1}^{n_0}\lambda_\alpha Z_\alpha + \left( f_{k,0} - \sum_{\alpha=1}^{n_0} \lambda_\alpha f_{k,\alpha} \right) \sum{k=0}^K a_k
+	Z_0^* =  \sum_{\alpha=1}^{n_0}\lambda_\alpha Z_\alpha + \left( f_{k,0} - \sum_{\alpha=1}^{n_0} \lambda_\alpha f_{k,\alpha} \right) \sum_{k=0}^K a_k
 \end{equation}
 We follow the same procedure as Ordinary kriging and find a similar equation to equation~\ref{eq:stationnary_pt}
 \begin{equation} 
@@ -304,8 +352,11 @@ We follow the same procedure as Ordinary kriging and find a similar equation to 
        		[f_{k,0}]^T 					\\
      	\end{bmatrix}
 \end{equation}
-Once the $\lambda_\beta$ and $\mu_k$ are found, kriging estimate and variance can be computed.
+Once the $\lambda_\beta$ and $\mu_k$ are found, kriging estimate and variance can be computed
 
+\begin{equation}
+	\sigma_E^2 =  \operatorname{var}\{ Z_0\} - \sum_{\alpha=1}^n \lambda_\alpha \operatorname{C}\{Z_\alpha,Z_0\} - \sum_{k=0}^K \mu_k f_{k,0}
+\end{equation}
 
 
 \subsection{Block Kriging} 
@@ -349,7 +400,7 @@ The weight $d_\alpha$ are obtain by identification of data
        		[0] 					\\
      	\end{bmatrix}
 \end{equation}
-With dual kriging we are not minimizing an error variance but "calibrate" the weight on the known values. What's really interesting here is that the weight $d_\alpha$ are only depending on $\boldsymbol{u_\alpha}$ and $\boldsymbol{u_\beta}$ but not on $\boldsymbol{u_0}$. This made possible to compute the weight once and use them for several point.
+With dual kriging we are not minimizing an error variance but "calibrate" the weight on the known values. What's really interesting here is that the weight $d_\alpha$ are only depending on $\boldsymbol{u_\alpha}$ and $\boldsymbol{u_\beta}$ but not on $\boldsymbol{u_0}$. This made possible to compute the weight once and use them for several point (computing saving time). However it does not provide the kriging variance and assume the covariance model to be exact at the global scale. 
 
 \subsection{Filtering}
 One exemple of filtering is with a nugget effect: we don't want the direct neighbouring point ($Z(\boldsymbol{u_{min}})$ with $\| \boldsymbol{u_{min}}-\boldsymbol{u_0}\|< d_{min}$) to influence the estimated value. Equation~\ref{eq:dualkrig} helps us to see how filtering can be apply to krigging by simply putting covariance at certain distance equal to zero. 
@@ -359,13 +410,21 @@ One exemple of filtering is with a nugget effect: we don't want the direct neigh
  \emph{Log-Normal Kriging} is a non-linear krigging procedure which (1) reduces the variability of sample point and (2) transform log-normal distributed variables in normale distribution. The back-transforme depend on error variance. (not very used)
 \emph{Multi-gaussian} convert with a normal z-score the data. 
 
-\subsection{Indicator Kriging} final result represent the uncertain distribution at unsampled location (instead of single value) and has not simple back transform which therefore require a conditional simulation technique. Indicator variable express the confidence in the sample values. It therefore allows incomplete or soft information (value less than 1). There are not distribution assumed in the data.
+\subsection{Indicator Kriging}
+IK perform an OK on the indicator transform $I$ of the data $X$ at certain threshold (or cutoffs) $x_t$,
 \[I(u_j,x_t) = \left\{
 	\begin{array}{l}
 		1 \text{, if }X(u_j)<x_t\\
 		0 \text{, if }X(u_j)>x_t
-	\end{array}
-\right.\]	
+	\end{array}.
+\right.\]
+
+The resulting kriged field correspond to uncertainty distribution for each threshold. Combining them can built a CDF at each unsampled location. 
+
+The adventage of IK are (1) to be non-parametric, thus not assuming a Gaussian RF. (2) take into account the structure of each indicator. (3) produce estimation variance. (4) requires only local stationarity.
+
+Yet, a few problem remain: (1) many variogram and kriging system to solve(one per indicator). (2) Indicator value below 0 or above 1 are possible but are unmeaningful (3) alsor there is no insurance that the cdf is monotically increasing (4) order relation: if different variogram are used for different threshold, inconsitant results occurs.
+	
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -415,15 +474,19 @@ In ordinary cokriging, we need $m_{Z,0} -\sum_\alpha^Z \lambda_{\alpha^Z}^Z m_{Z
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Search Strategie}
-Search strategie  are used in computing covariance matrices. Three reasons encourages algorithm to only a limited number of neraby conditioning data : 
+\section{Neighborhood and Search Strategie}
+\subsection{Limiting the neighborhood}
+Three reasons encourages algorithm to only a limited number of neraby conditioning data : 
 \begin{enumerate}
 	\item CPU time to solve a kriging system is $\mathcal{O}({n^3})$ and memory storage is $\mathcal{O}({n^2})$,
-	\item Knowlegde of covariance for very distence over half or third of domain is poorly known 
-	\item  local search allow local rescaling of the mean for ordinary kriging.
+	\item Knowledge of covariance for very distance over half or third of domain is poorly known 
+	\item Local search allow local rescaling of the mean for ordinary kriging.
 \end{enumerate} 
+
+\subsection{Screening Effect}
+
  
-Three technique will be explained:
+\subsection{Search Strategies}
 \begin{itemize}
 \item The simplest implementation is to check for all available point and retaining only the one inside the ellipsoid (Exhaustive search).
 The previous work was sorting the point and selecting the n-closest \citep{Ruggeri2013}

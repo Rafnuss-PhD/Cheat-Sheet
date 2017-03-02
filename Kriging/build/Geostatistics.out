@@ -21,6 +21,9 @@
 \BOOKMARK [2][-]{subsection.4.3}{Collocated cokriging}{section.4}% 21
 \BOOKMARK [2][-]{subsection.4.4}{Cosimulation}{section.4}% 22
 \BOOKMARK [2][-]{subsection.4.5}{...}{section.4}% 23
-\BOOKMARK [1][-]{section.5}{Search Strategie}{}% 24
-\BOOKMARK [1][-]{section.6}{Limitation}{}% 25
-\BOOKMARK [1][-]{section.7}{To go futher}{}% 26
+\BOOKMARK [1][-]{section.5}{Neighborhood and Search Strategie}{}% 24
+\BOOKMARK [2][-]{subsection.5.1}{Limiting the neighborhood}{section.5}% 25
+\BOOKMARK [2][-]{subsection.5.2}{Screening Effect}{section.5}% 26
+\BOOKMARK [2][-]{subsection.5.3}{Search Strategies}{section.5}% 27
+\BOOKMARK [1][-]{section.6}{Limitation}{}% 28
+\BOOKMARK [1][-]{section.7}{To go futher}{}% 29

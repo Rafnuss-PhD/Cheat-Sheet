@@ -64,12 +64,26 @@ $$P(A,B)=P(A \mid B) P(B)=P(B \mid A) P(A)$$
 The sequential simulation algorithm is based on this equation:
 $$P(X_1,\ldots,X_n) = \prod_{i=1}^n  P(X_i \mid X_1, \ldots X_{i-1}) $$
 
+	\subsection{Independence}
+
+Two event are say independent if 
+$$P(A,B) = P(A)P(B)$$
+and conditionally independent when:
+$$P(D_1,\ldots,D_n \mid A) = \prod_{i=1}^n P(D_i\mid A)$$
+
+	\subsection{Odd ratios}
+$$O_i = \frac{P_i}{1-P_i}, \quad 0<P(A)<1$$
+Bordly (1982), Journel (2002) and Krishnan (2008) are using this notation. Although Allard (2012) said that back-transforming non-binary odds ratio of into probabilities using $P(\cdot)=O(\cdot)/(1+O(\cdot))$
+
 	\subsection{Kullback-Leibler (KL) divergence}
-KL divergence is a non-symmetric measure of the information lost when $P_G$ is used to approximate $P$:
+KL divergence is a non-symmetric (therefore can't be qualify of distance) measure of the information lost when $P_G$ is used to approximate $P$:
 $$D_{\mathrm{KL}}(P\|P_G) = \int_{-\infty}^\infty P(A) \, \log\frac{P(A)}{P_G(A)} \, {\rm d}A =\sum_A P(A) \, \log\frac{P(A)}{P_G(A)}$$
 It can be view as the expectation of the logarithmic difference between the probabilities.
 
-\section{Aggregation}
+There is a strong connection between entropy and KL divergence.
+
+\newpage
+\section{Aggregation of Probabilities}
 Aggregation targets to combine difference knowledge $D_i$ related to a single event $A$ :
 \begin{framed}
 \begin{align*} 
@@ -77,7 +91,25 @@ P(A \mid D_1,\ldots,D_n)	&= P_G\left(P(A \mid D_1), \ldots, P(A \mid D_n)\right)
 						&= P_G\left(P_1, \ldots, P_n \right)
 \end{align*}
 \end{framed}
-\section{Properties}
+
+Combining the definition of the joint probability $P(A, D_1,\ldots,D_n)$ and $P(D_1,\ldots,D_n)$ we arrived to:
+\begin{align*} 
+P(A \mid D_1,\ldots,D_n)	&= \frac{P(A, D_1,\ldots,D_n)}{P(D_1,\ldots,D_n)} \\
+							&= \frac{P(A) \prod_{i=1}^n  P(D_i \mid A_1, D_1, \ldots D_{i-1}) }{P(D_1,\ldots,D_n)}
+\end{align*}
+
+
+Assuming independence of $D_i$ conditionally to $A$  suppress the dependence of the author $D_1, \ldots D_{i-1}$:
+$$P(A \mid D_1,\ldots,D_n) = \frac{P(A) \prod_{i=1}^n  P(D_i \mid A) }{P(D_1,\ldots,D_n)}$$
+
+
+Which bring to the aggregation method:
+$$P(A \mid D_1,\ldots,D_n)=P(A) \prod_{i=1}^n \frac{P(D_i \mid A)}{P(D_i)}$$
+
+
+
+
+\subsection{Properties}
 \begin{itemize}
 	\item \textbf{Dictatorship.} If the method has a probability $P_i$ which overtake the others :
 $$P_G(P_1,...,P_i,...,P_n)(A)=P_i(A)$$
@@ -86,7 +118,7 @@ $$P_G \in \left[\min\{P_1,...,P_n\},\, \max\{P_1,...,P_n\}\right] $$
 	\item \textbf{Unanimity.} If the method verify:
 $$ \forall P_i=p \Rightarrow P_G = p $$
 Convex method always preserve unanimity.
-	\item \textbf{Independence Preservation.} If the method verify:
+	\item \textbf{Independence Preservation.} If the method verify:ee
 $$P_G(P_1,...,P_n)(A\cap B)=P_G(P_1,...,P_n)(A) \, P_G(P_1,...,P_n)(B)$$
 	\item \textbf{Marginalization.} If the method verify:
 $$P_G\{M_k(P_1),... ,M_k(P_n)\}=M_k\{P_G(P_1,...,P_n)\}$$ 
@@ -101,36 +133,21 @@ $$P^L_i(A)=\frac{L(A)P_i(A)}{\sum_A L(A) P_i(A)}$$
 $$\exists P_i | P_i(A)=0 \text{ or } P_i(A)=1 \Rightarrow P_G(A)=0 \text{ or } P_G(A)=1 $$
 \end{itemize}
 
+
+
+
+
+\newpage
 \section{Aggregation Methods}
-Combining the definition of the joint probability $P(A, D_1,\ldots,D_n)$ and $P(D_1,\ldots,D_n)$ we arrived to:
-\begin{align*} 
-P(A \mid D_1,\ldots,D_n)	&= \frac{P(A, D_1,\ldots,D_n)}{P(D_1,\ldots,D_n)} \\
-							&= \frac{P(A) \prod_{i=1}^n  P(D_i \mid A_1, D_1, \ldots D_{i-1}) }{P(D_1,\ldots,D_n)}
-\end{align*}
-
-	\subsection{Conditional independence}
-Two event are say conditionally independent if 
-$$P(X_1,\ldots,X_n \mid A) = \prod_i P(X_i \mid A)$$
-
-Assuming independence of $D_i$ conditionally to $A$  suppress the dependence of the author $D_1, \ldots D_{i-1}$:
-$$P(A \mid D_1,\ldots,D_n) = \frac{P(A) \prod_{i=1}^n  P(D_i \mid A) }{P(D_1,\ldots,D_n)}$$
-
-	\subsection{Full independence}
-If $D_i$ are assumed to be independent, we get:
-$$P(D_1,\ldots,D_n) = \prod_{i=1}^n P(D_i)$$
-
-Which bring to the aggregation method:
-$$P(A \mid D_1,\ldots,D_n)=P(A) \prod_{i=1}^n \frac{P(D_i \mid A)}{P(D_i)}$$
-
-	\subsection{Additive method}
-\begin{itemize}
-	\item \textbf{(Generalized) Linear Pooling.} 
+Allard et al. present table and formula to summarized all method explain below (Table 2 and 3, equation 33 in the paper).
+	\subsection{Additive Methods (OR method)} 	
+		\subsubsection{(Generalized) Linear Pooling} 
 $$P_G(A) = \sum_{i=0}^nw_i P_i(A), \qquad \sum_i w_i=1$$
-Properties: sub-optimal, do not preserve independence, 0/1 forcing nor Bayesianity. convex method (preserve unanimity) and marginalization.
+Properties: sub-optimal (not the best), do not preserve independence, 0/1 forcing nor Bayesianity. convex method (preserve unanimity) and marginalization (only possible aggregation method).
 
-$P_G$ result in a multi-modal distribution, each $P_i$ represent a different population. This is equivalent to first sample a population $P_i$ with weight $W_i$ and then sample inside this distribution the event $A$. No agreement between different source is stress.
+$P_G$ result in a multi-modal distribution, each $P_i$ represent a different population. This is equivalent to first sample a population $P_i$ with weight $w_i$ and then sample inside this distribution the event $A$ (marginalization propertie, arithmetic average, disjunction of probabilities). No agreement (intersection) between different source is stress.
 
-	\item \textbf{Beta-Transform Linear Pooling}
+		\subsubsection{Beta-Transform Linear Pooling}
 $$P_G(A) = H_{\alpha,\beta}\left( \sum_{i=0}^n w_i P_i(A) \right)$$
 Again, $\sum_i w_i=1$, and $H_{\alpha,\beta}$ is the cumulative density function of a beta distribution:
 $$H_{\alpha,\beta}(x)= B(\alpha,\beta)^{-1} \int_0^x t^{\alpha-1}(1-t)^{\beta-1} dt $$
@@ -139,38 +156,51 @@ where $x\in [0,1]$, $\alpha> 0$, $\beta> 0$  and $B(\alpha,\beta)=\int_0^1 t^{\a
 The special case $\beta=\alpha=1$ simplify to the linear pooling. 
 
 Properties: loose marginalization, non-convex aggr. prob., can be show to be better than LP (why ?)
-\end{itemize}
 
-	\subsection{Multiplicative method}
-\begin{itemize}
-	\item \textbf{(Generalized) Log-linear Pooling.} 
-$$P_G(A) \propto P_0(A)^{1-S_w} \prod_{i=1}^n P_i(A)^{w_i}$$
-where $w_i$ is the weight associated to each $P_i$ and $S_w=\sum_i w_i$.
-Properties: verify Bayesianity, preserve unanimity and  0/1 forcing but do not preserve independence nor marginalization.
+	\subsection{Multiplicative Methods (AND method)} 	
+		\subsubsection{(Generalized) Log-linear Pooling} 
+$$P_G(A) \propto P_0(A)^{1-sum w_i} \prod_{i=1}^n P_i(A)^{w_i}$$
 
-If $w_i=1 \forall i \neq 0$, this corresponds to the \textit{conjunction of probabilities}.
+Properties: verify external Bayesian (only possible aggregation method), preserve unanimity and  0/1 forcing but do not preserve independence nor marginalization. 
 
-This is equivalent to a Bayesian notation of conditional propability:
+If we don't include the prior and put each weight equal to 1 ($w_i=1$), this corresponds to the conjunction of probabilities. 
+If the sum of weight is not equal to one, all properties are lost.
+
+This can be re-written with the conditional prob.:
 \begin{align*} 
 P(A \mid D_1,\ldots,D_n)	& \propto P_0(A) P(D_1,\ldots,D_n\mid A)\\ 
-						& \propto P_0(A)^{1-S_w} \prod_{i=1}^n P(A \mid D_i)^{w_{a,D_1,\ldots D_n}}\\ 
+						& \propto P_0(A)^{1-sum w_i} \prod_{i=1}^n P(A \mid D_i)^{w_{a,D_1,\ldots D_n}}\\ 
 \end{align*}
-Therefore, the decomposition is exact if there is one weight $w$ per combinaison ($A,D_i,\ldots D_n$). Log-linear pooling make the assumption that the weight is constant.
+Therefore, the decomposition is exact if there is one weight $w_i$ per decomposition ($A,D_i,\ldots D_n$). Log-linear pooling make the assumption that the weight is constant.
 
-The sum of weight $S_w$ plays an important role with regards to the prior influence: If $S_w=1$, $P_0$ is filtered out; if $S_w>1$, $P_G$ will be closer to $P_i$ than $P_0$
+The sum of weight $S_w$ plays an important role with regards to the prior influence: If $\sum w_i=1$, $P_0$ is filtered out; if $S_w>1$, $P_G$ will be closer to $P_i$ than $P_0$
 
 
-	\item \textbf{Generalized Logarithmic Pooling}
+		\subsubsection{(Generalized) Logarithmic Pooling}
 $$P_G(A) \propto H(A) \prod_{i=1}^n P(A \mid D_i)^{w_i}$$
 GLP allows $P_G$ to depend upon $A$ where again $\sum_i w_i=1$, and $H(A)$ is the an arbitrary bounded function playing the role of likelihood on the elements of A.
-\end{itemize}
 
-\begin{itemize}
-	\item Tau model
-	\item Bordley formula
-	\item Nu-model
-	\item ...
-\end{itemize}
+
+		\subsubsection{Maximum Entropy Approach}
+The Kullback-Leiber divergence can be used as an objectif function to maximized in order to find the best $P_G$ similar to $P$. Allard et al. (2012) showed that its is equivalent to conditional independence and is the special case of log-linear pooling for weight equalt to 1.
+
+
+
+
+	\subsection{Multiplication of Odds Methods} 
+Allard et al. (2012) emphasize that most of the literature is concerned about binary case and that odds methods are equivalent to probabilities method.
+		\subsubsection{Bordley formula}
+For binary case, Bordley (1982) publish an aggregation technique based on the product of odd ratios:
+
+
+		\subsubsection{Tau model}
+$$\frac{O}{O_0}=\prod_{i=0}^n \left( \frac{O_i}{O_0}\right)^{\tau_i}$$
+with $O=O(A\mid D_1,\ldots,D_n)$, $O_0=O(A)$ and $O_i=O(A\mid D_i)$.
+Journel (2002) interpreted $O_i$ as distances to the unknown A. The model verify convexity and any value $\tau_i$ measure the redundancy of the informations $D_i$ with the informations $D_{1,\ldots i-1}$ already used.
+
+		\subsubsection{Nu-model}
+
+
 
 
 
